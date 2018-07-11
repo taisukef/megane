@@ -72,15 +72,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         session = nil
         camera = nil
     }
-    let DETECT_QRCODE = true
-    let FILTER_SUPPORT = false
+    let DETECT_QRCODE = false
     func configureCamera() {
         session = AVCaptureSession()
         // iPhone Xで実験
         //session.sessionPreset = AVCaptureSession.Preset.cif352x288 // 34% 荒い
-        //session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
+        session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
         //session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
-        session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
+        //session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
         //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
@@ -166,12 +165,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             var image = self.imageFromSampleBuffer(sampleBuffer: didOutput)
             
             // filter
-            if FILTER_SUPPORT {
-                if filters.count > 0 {
-                    let filter = filters[nfilter]
-                    filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
-                    image = UIImage(ciImage: filter.outputImage!)
-                }
+            if filters.count > 0 {
+                let filter = filters[nfilter]
+                filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
+                image = UIImage(ciImage: filter.outputImage!)
             }
 
             image = resizeImage(image: image, ratio: zoom)
@@ -297,13 +294,11 @@ g.strokePath()
                     }
                     print("zoom: \(zoom)")
  */
-                if FILTER_SUPPORT {
                     if nfilter == filters.count - 1 {
                         nfilter = 0
                     } else {
                         nfilter += 1
                     }
-                }
                // }
             } else if newVolume < initialVolume - 0.05 {
               //  if let view = volumeView?.subviews.first as? UISlider {
@@ -319,12 +314,10 @@ g.strokePath()
                     flashLED(flg: flashflg)
                     flashflg = !flashflg
  */
-                if FILTER_SUPPORT {
-                    if nfilter == 0 {
-                        nfilter = filters.count - 1
-                    } else {
-                        nfilter -= 1
-                    }
+                if nfilter == 0 {
+                    nfilter = filters.count - 1
+                } else {
+                    nfilter -= 1
                 }
 
                     /*

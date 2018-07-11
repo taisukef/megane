@@ -7,64 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69C5136420B6CE660081B274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5136320B6CE660081B274 /* AppDelegate.swift */; };
-		69C5136620B6CE660081B274 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5136520B6CE660081B274 /* ViewController.swift */; };
-		69C5136920B6CE670081B274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69C5136720B6CE670081B274 /* Main.storyboard */; };
-		69C5136B20B6CE700081B274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69C5136A20B6CE700081B274 /* Assets.xcassets */; };
-		69C5136E20B6CE700081B274 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69C5136C20B6CE700081B274 /* LaunchScreen.storyboard */; };
-		69C5137920B6CE710081B274 /* meganeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5137820B6CE710081B274 /* meganeTests.swift */; };
-		69C5138420B6CE710081B274 /* meganeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5138320B6CE710081B274 /* meganeUITests.swift */; };
+		69483FA720CB2C0200F217AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FA620CB2C0200F217AF /* AppDelegate.swift */; };
+		69483FA920CB2C0200F217AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FA820CB2C0200F217AF /* ViewController.swift */; };
+		69483FAC20CB2C0200F217AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAA20CB2C0200F217AF /* Main.storyboard */; };
+		69483FAE20CB2C0400F217AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAD20CB2C0400F217AF /* Assets.xcassets */; };
+		69483FB120CB2C0400F217AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */; };
+		69483FBC20CB2C0400F217AF /* meganeworldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FBB20CB2C0400F217AF /* meganeworldTests.swift */; };
+		69483FC720CB2C0400F217AF /* meganeworldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FC620CB2C0400F217AF /* meganeworldUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		69C5137520B6CE710081B274 /* PBXContainerItemProxy */ = {
+		69483FB820CB2C0400F217AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 69C5135820B6CE660081B274 /* Project object */;
+			containerPortal = 69483F9B20CB2C0200F217AF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 69C5135F20B6CE660081B274;
-			remoteInfo = megane;
+			remoteGlobalIDString = 69483FA220CB2C0200F217AF;
+			remoteInfo = meganeworld;
 		};
-		69C5138020B6CE710081B274 /* PBXContainerItemProxy */ = {
+		69483FC320CB2C0400F217AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 69C5135820B6CE660081B274 /* Project object */;
+			containerPortal = 69483F9B20CB2C0200F217AF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 69C5135F20B6CE660081B274;
-			remoteInfo = megane;
+			remoteGlobalIDString = 69483FA220CB2C0200F217AF;
+			remoteInfo = meganeworld;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		69C5136020B6CE660081B274 /* megane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = megane.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		69C5136320B6CE660081B274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		69C5136520B6CE660081B274 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		69C5136820B6CE670081B274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		69C5136A20B6CE700081B274 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		69C5136D20B6CE700081B274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		69C5136F20B6CE700081B274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69C5137420B6CE710081B274 /* meganeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69C5137820B6CE710081B274 /* meganeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeTests.swift; sourceTree = "<group>"; };
-		69C5137A20B6CE710081B274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69C5137F20B6CE710081B274 /* meganeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69C5138320B6CE710081B274 /* meganeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeUITests.swift; sourceTree = "<group>"; };
-		69C5138520B6CE710081B274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69483FA320CB2C0200F217AF /* meganeworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meganeworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69483FA620CB2C0200F217AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		69483FA820CB2C0200F217AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		69483FAB20CB2C0200F217AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69483FAD20CB2C0400F217AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69483FB020CB2C0400F217AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		69483FB220CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69483FB720CB2C0400F217AF /* meganeworldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeworldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69483FBB20CB2C0400F217AF /* meganeworldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeworldTests.swift; sourceTree = "<group>"; };
+		69483FBD20CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeworldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69483FC620CB2C0400F217AF /* meganeworldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeworldUITests.swift; sourceTree = "<group>"; };
+		69483FC820CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		69C5135D20B6CE660081B274 /* Frameworks */ = {
+		69483FA020CB2C0200F217AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C5137120B6CE710081B274 /* Frameworks */ = {
+		69483FB420CB2C0400F217AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C5137C20B6CE710081B274 /* Frameworks */ = {
+		69483FBF20CB2C0400F217AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -74,137 +74,137 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		69C5135720B6CE660081B274 = {
+		69483F9A20CB2C0200F217AF = {
 			isa = PBXGroup;
 			children = (
-				69C5136220B6CE660081B274 /* megane */,
-				69C5137720B6CE710081B274 /* meganeTests */,
-				69C5138220B6CE710081B274 /* meganeUITests */,
-				69C5136120B6CE660081B274 /* Products */,
+				69483FA520CB2C0200F217AF /* meganeworld */,
+				69483FBA20CB2C0400F217AF /* meganeworldTests */,
+				69483FC520CB2C0400F217AF /* meganeworldUITests */,
+				69483FA420CB2C0200F217AF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		69C5136120B6CE660081B274 /* Products */ = {
+		69483FA420CB2C0200F217AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				69C5136020B6CE660081B274 /* megane.app */,
-				69C5137420B6CE710081B274 /* meganeTests.xctest */,
-				69C5137F20B6CE710081B274 /* meganeUITests.xctest */,
+				69483FA320CB2C0200F217AF /* meganeworld.app */,
+				69483FB720CB2C0400F217AF /* meganeworldTests.xctest */,
+				69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		69C5136220B6CE660081B274 /* megane */ = {
+		69483FA520CB2C0200F217AF /* meganeworld */ = {
 			isa = PBXGroup;
 			children = (
-				69C5136320B6CE660081B274 /* AppDelegate.swift */,
-				69C5136520B6CE660081B274 /* ViewController.swift */,
-				69C5136720B6CE670081B274 /* Main.storyboard */,
-				69C5136A20B6CE700081B274 /* Assets.xcassets */,
-				69C5136C20B6CE700081B274 /* LaunchScreen.storyboard */,
-				69C5136F20B6CE700081B274 /* Info.plist */,
+				69483FA620CB2C0200F217AF /* AppDelegate.swift */,
+				69483FA820CB2C0200F217AF /* ViewController.swift */,
+				69483FAA20CB2C0200F217AF /* Main.storyboard */,
+				69483FAD20CB2C0400F217AF /* Assets.xcassets */,
+				69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */,
+				69483FB220CB2C0400F217AF /* Info.plist */,
 			);
-			path = megane;
+			path = meganeworld;
 			sourceTree = "<group>";
 		};
-		69C5137720B6CE710081B274 /* meganeTests */ = {
+		69483FBA20CB2C0400F217AF /* meganeworldTests */ = {
 			isa = PBXGroup;
 			children = (
-				69C5137820B6CE710081B274 /* meganeTests.swift */,
-				69C5137A20B6CE710081B274 /* Info.plist */,
+				69483FBB20CB2C0400F217AF /* meganeworldTests.swift */,
+				69483FBD20CB2C0400F217AF /* Info.plist */,
 			);
-			path = meganeTests;
+			path = meganeworldTests;
 			sourceTree = "<group>";
 		};
-		69C5138220B6CE710081B274 /* meganeUITests */ = {
+		69483FC520CB2C0400F217AF /* meganeworldUITests */ = {
 			isa = PBXGroup;
 			children = (
-				69C5138320B6CE710081B274 /* meganeUITests.swift */,
-				69C5138520B6CE710081B274 /* Info.plist */,
+				69483FC620CB2C0400F217AF /* meganeworldUITests.swift */,
+				69483FC820CB2C0400F217AF /* Info.plist */,
 			);
-			path = meganeUITests;
+			path = meganeworldUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		69C5135F20B6CE660081B274 /* megane */ = {
+		69483FA220CB2C0200F217AF /* meganeworld */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69C5138820B6CE710081B274 /* Build configuration list for PBXNativeTarget "megane" */;
+			buildConfigurationList = 69483FCB20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworld" */;
 			buildPhases = (
-				69C5135C20B6CE660081B274 /* Sources */,
-				69C5135D20B6CE660081B274 /* Frameworks */,
-				69C5135E20B6CE660081B274 /* Resources */,
+				69483F9F20CB2C0200F217AF /* Sources */,
+				69483FA020CB2C0200F217AF /* Frameworks */,
+				69483FA120CB2C0200F217AF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = megane;
-			productName = megane;
-			productReference = 69C5136020B6CE660081B274 /* megane.app */;
+			name = meganeworld;
+			productName = meganeworld;
+			productReference = 69483FA320CB2C0200F217AF /* meganeworld.app */;
 			productType = "com.apple.product-type.application";
 		};
-		69C5137320B6CE710081B274 /* meganeTests */ = {
+		69483FB620CB2C0400F217AF /* meganeworldTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69C5138B20B6CE710081B274 /* Build configuration list for PBXNativeTarget "meganeTests" */;
+			buildConfigurationList = 69483FCE20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldTests" */;
 			buildPhases = (
-				69C5137020B6CE710081B274 /* Sources */,
-				69C5137120B6CE710081B274 /* Frameworks */,
-				69C5137220B6CE710081B274 /* Resources */,
+				69483FB320CB2C0400F217AF /* Sources */,
+				69483FB420CB2C0400F217AF /* Frameworks */,
+				69483FB520CB2C0400F217AF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				69C5137620B6CE710081B274 /* PBXTargetDependency */,
+				69483FB920CB2C0400F217AF /* PBXTargetDependency */,
 			);
-			name = meganeTests;
-			productName = meganeTests;
-			productReference = 69C5137420B6CE710081B274 /* meganeTests.xctest */;
+			name = meganeworldTests;
+			productName = meganeworldTests;
+			productReference = 69483FB720CB2C0400F217AF /* meganeworldTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		69C5137E20B6CE710081B274 /* meganeUITests */ = {
+		69483FC120CB2C0400F217AF /* meganeworldUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69C5138E20B6CE710081B274 /* Build configuration list for PBXNativeTarget "meganeUITests" */;
+			buildConfigurationList = 69483FD120CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldUITests" */;
 			buildPhases = (
-				69C5137B20B6CE710081B274 /* Sources */,
-				69C5137C20B6CE710081B274 /* Frameworks */,
-				69C5137D20B6CE710081B274 /* Resources */,
+				69483FBE20CB2C0400F217AF /* Sources */,
+				69483FBF20CB2C0400F217AF /* Frameworks */,
+				69483FC020CB2C0400F217AF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				69C5138120B6CE710081B274 /* PBXTargetDependency */,
+				69483FC420CB2C0400F217AF /* PBXTargetDependency */,
 			);
-			name = meganeUITests;
-			productName = meganeUITests;
-			productReference = 69C5137F20B6CE710081B274 /* meganeUITests.xctest */;
+			name = meganeworldUITests;
+			productName = meganeworldUITests;
+			productReference = 69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		69C5135820B6CE660081B274 /* Project object */ = {
+		69483F9B20CB2C0200F217AF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = taisukef;
 				TargetAttributes = {
-					69C5135F20B6CE660081B274 = {
-						CreatedOnToolsVersion = 9.3.1;
+					69483FA220CB2C0200F217AF = {
+						CreatedOnToolsVersion = 9.4;
 					};
-					69C5137320B6CE710081B274 = {
-						CreatedOnToolsVersion = 9.3.1;
-						TestTargetID = 69C5135F20B6CE660081B274;
+					69483FB620CB2C0400F217AF = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = 69483FA220CB2C0200F217AF;
 					};
-					69C5137E20B6CE710081B274 = {
-						CreatedOnToolsVersion = 9.3.1;
-						TestTargetID = 69C5135F20B6CE660081B274;
+					69483FC120CB2C0400F217AF = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = 69483FA220CB2C0200F217AF;
 					};
 				};
 			};
-			buildConfigurationList = 69C5135B20B6CE660081B274 /* Build configuration list for PBXProject "megane" */;
+			buildConfigurationList = 69483F9E20CB2C0200F217AF /* Build configuration list for PBXProject "meganeworld" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -212,37 +212,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 69C5135720B6CE660081B274;
-			productRefGroup = 69C5136120B6CE660081B274 /* Products */;
+			mainGroup = 69483F9A20CB2C0200F217AF;
+			productRefGroup = 69483FA420CB2C0200F217AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				69C5135F20B6CE660081B274 /* megane */,
-				69C5137320B6CE710081B274 /* meganeTests */,
-				69C5137E20B6CE710081B274 /* meganeUITests */,
+				69483FA220CB2C0200F217AF /* meganeworld */,
+				69483FB620CB2C0400F217AF /* meganeworldTests */,
+				69483FC120CB2C0400F217AF /* meganeworldUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		69C5135E20B6CE660081B274 /* Resources */ = {
+		69483FA120CB2C0200F217AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C5136E20B6CE700081B274 /* LaunchScreen.storyboard in Resources */,
-				69C5136B20B6CE700081B274 /* Assets.xcassets in Resources */,
-				69C5136920B6CE670081B274 /* Main.storyboard in Resources */,
+				69483FB120CB2C0400F217AF /* LaunchScreen.storyboard in Resources */,
+				69483FAE20CB2C0400F217AF /* Assets.xcassets in Resources */,
+				69483FAC20CB2C0200F217AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C5137220B6CE710081B274 /* Resources */ = {
+		69483FB520CB2C0400F217AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C5137D20B6CE710081B274 /* Resources */ = {
+		69483FC020CB2C0400F217AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,59 +252,59 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		69C5135C20B6CE660081B274 /* Sources */ = {
+		69483F9F20CB2C0200F217AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C5136620B6CE660081B274 /* ViewController.swift in Sources */,
-				69C5136420B6CE660081B274 /* AppDelegate.swift in Sources */,
+				69483FA920CB2C0200F217AF /* ViewController.swift in Sources */,
+				69483FA720CB2C0200F217AF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C5137020B6CE710081B274 /* Sources */ = {
+		69483FB320CB2C0400F217AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C5137920B6CE710081B274 /* meganeTests.swift in Sources */,
+				69483FBC20CB2C0400F217AF /* meganeworldTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C5137B20B6CE710081B274 /* Sources */ = {
+		69483FBE20CB2C0400F217AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C5138420B6CE710081B274 /* meganeUITests.swift in Sources */,
+				69483FC720CB2C0400F217AF /* meganeworldUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		69C5137620B6CE710081B274 /* PBXTargetDependency */ = {
+		69483FB920CB2C0400F217AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 69C5135F20B6CE660081B274 /* megane */;
-			targetProxy = 69C5137520B6CE710081B274 /* PBXContainerItemProxy */;
+			target = 69483FA220CB2C0200F217AF /* meganeworld */;
+			targetProxy = 69483FB820CB2C0400F217AF /* PBXContainerItemProxy */;
 		};
-		69C5138120B6CE710081B274 /* PBXTargetDependency */ = {
+		69483FC420CB2C0400F217AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 69C5135F20B6CE660081B274 /* megane */;
-			targetProxy = 69C5138020B6CE710081B274 /* PBXContainerItemProxy */;
+			target = 69483FA220CB2C0200F217AF /* meganeworld */;
+			targetProxy = 69483FC320CB2C0400F217AF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		69C5136720B6CE670081B274 /* Main.storyboard */ = {
+		69483FAA20CB2C0200F217AF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69C5136820B6CE670081B274 /* Base */,
+				69483FAB20CB2C0200F217AF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		69C5136C20B6CE700081B274 /* LaunchScreen.storyboard */ = {
+		69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69C5136D20B6CE700081B274 /* Base */,
+				69483FB020CB2C0400F217AF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		69C5138620B6CE710081B274 /* Debug */ = {
+		69483FC920CB2C0400F217AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -363,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -372,7 +372,7 @@
 			};
 			name = Debug;
 		};
-		69C5138720B6CE710081B274 /* Release */ = {
+		69483FCA20CB2C0400F217AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -417,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -426,164 +426,166 @@
 			};
 			name = Release;
 		};
-		69C5138920B6CE710081B274 /* Debug */ = {
+		69483FCC20CB2C0400F217AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = megane/Info.plist;
+				INFOPLIST_FILE = meganeworld/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.megane;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		69C5138A20B6CE710081B274 /* Release */ = {
+		69483FCD20CB2C0400F217AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = megane/Info.plist;
+				INFOPLIST_FILE = meganeworld/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.megane;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		69C5138C20B6CE710081B274 /* Debug */ = {
+		69483FCF20CB2C0400F217AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeTests/Info.plist;
+				INFOPLIST_FILE = meganeworldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/megane.app/megane";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/meganeworld.app/meganeworld";
 			};
 			name = Debug;
 		};
-		69C5138D20B6CE710081B274 /* Release */ = {
+		69483FD020CB2C0400F217AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeTests/Info.plist;
+				INFOPLIST_FILE = meganeworldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/megane.app/megane";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/meganeworld.app/meganeworld";
 			};
 			name = Release;
 		};
-		69C5138F20B6CE710081B274 /* Debug */ = {
+		69483FD220CB2C0400F217AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeUITests/Info.plist;
+				INFOPLIST_FILE = meganeworldUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = megane;
+				TEST_TARGET_NAME = meganeworld;
 			};
 			name = Debug;
 		};
-		69C5139020B6CE710081B274 /* Release */ = {
+		69483FD320CB2C0400F217AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeUITests/Info.plist;
+				INFOPLIST_FILE = meganeworldUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = megane;
+				TEST_TARGET_NAME = meganeworld;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		69C5135B20B6CE660081B274 /* Build configuration list for PBXProject "megane" */ = {
+		69483F9E20CB2C0200F217AF /* Build configuration list for PBXProject "meganeworld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69C5138620B6CE710081B274 /* Debug */,
-				69C5138720B6CE710081B274 /* Release */,
+				69483FC920CB2C0400F217AF /* Debug */,
+				69483FCA20CB2C0400F217AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69C5138820B6CE710081B274 /* Build configuration list for PBXNativeTarget "megane" */ = {
+		69483FCB20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69C5138920B6CE710081B274 /* Debug */,
-				69C5138A20B6CE710081B274 /* Release */,
+				69483FCC20CB2C0400F217AF /* Debug */,
+				69483FCD20CB2C0400F217AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69C5138B20B6CE710081B274 /* Build configuration list for PBXNativeTarget "meganeTests" */ = {
+		69483FCE20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69C5138C20B6CE710081B274 /* Debug */,
-				69C5138D20B6CE710081B274 /* Release */,
+				69483FCF20CB2C0400F217AF /* Debug */,
+				69483FD020CB2C0400F217AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69C5138E20B6CE710081B274 /* Build configuration list for PBXNativeTarget "meganeUITests" */ = {
+		69483FD120CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69C5138F20B6CE710081B274 /* Debug */,
-				69C5139020B6CE710081B274 /* Release */,
+				69483FD220CB2C0400F217AF /* Debug */,
+				69483FD320CB2C0400F217AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 69C5135820B6CE660081B274 /* Project object */;
+	rootObject = 69483F9B20CB2C0200F217AF /* Project object */;
 }

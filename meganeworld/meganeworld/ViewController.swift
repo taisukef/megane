@@ -72,7 +72,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         session = nil
         camera = nil
     }
-    let DETECT_QRCODE = true
+    let DETECT_QRCODE = false
+    let DETECT_FACE = true
     let FILTER_SUPPORT = false
     func configureCamera() {
         session = AVCaptureSession()
@@ -111,6 +112,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // filter
         //フィルタのカメラへの追加
+        filterone = CIFilter(name: "CIPhotoEffectTransfer") // 古い写真のように
+
         var filter:CIFilter?
         filter = CIFilter(name: "CIComicEffect") // おもしろいけど、ちょっと重い VGAなら大丈夫！
         filters.append(filter!)
@@ -157,6 +160,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         session.startRunning()
     }
     var filters:Array<CIFilter> = []
+    var filterone:CIFilter?
+    
     var nfilter = 0
     var zoom:CGFloat = 1.0
     func captureOutput(_: AVCaptureOutput, didOutput: CMSampleBuffer, from: AVCaptureConnection) {
@@ -178,6 +183,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             if DETECT_QRCODE {
                 image = drawQR(image: image)
             }
+            if DETECT_FACE {
+                image = drawMegane(image: image)
+            }
+
+            if let filter = filterone {
+                filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
+                image = UIImage(ciImage: filter.outputImage!)
+            }
+
             self.imageView1.image = image
             self.imageView2.image = image
         })
@@ -232,6 +246,118 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 g.strokePath()
 
                 feature.messageString?.draw(in: rect, withAttributes: textFontAttributes)
+            }
+        }
+        let resimage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resimage!
+    }
+    var meganeoption = 0
+    func drawMegane(image: UIImage) -> UIImage {
+        UIGraphicsBeginImageContext(image.size)
+        let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
+        image.draw(in: rect)
+        let g = UIGraphicsGetCurrentContext()!
+        
+        // 顔認識
+        let detector : CIDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options:[CIDetectorAccuracy: CIDetectorAccuracyLow] )!
+        let features : NSArray = detector.features(in: CIImage(image: image)!) as NSArray
+        if features.count > 0 {
+            for feature in features as! [CIFaceFeature] {
+                var rect: CGRect = feature.bounds
+                rect.origin.y = image.size.height - rect.origin.y - rect.size.height
+                
+                /*
+                 CIFaceFeature
+                 bounds    CGRect    顔の大きさ/位置情報
+                 faceAngle    float    顔の傾き
+                 leftEyePosition    CGPoint    左目の位置
+                 rightEyePosition    CGPoint    右目の位置
+                 mouthPosition    CGPoint    口の位置
+                 hasSmile    BOOL    笑顔かどうか
+                 leftEyeClosed    BOOL    左目が閉じているかどうか
+                 rightEyeClosed    BOOL    右目が閉じているかどうか
+                 */
+                
+                let left = CGPoint(x: feature.leftEyePosition.x, y:image.size.height - feature.leftEyePosition.y)
+                let right = CGPoint(x: feature.rightEyePosition.x, y:image.size.height - feature.rightEyePosition.y)
+
+                if meganeoption < 3 {
+                    if meganeoption == 0 {
+                        g.setStrokeColor(UIColor.red.cgColor)
+                    } else if meganeoption == 1 {
+                        g.setStrokeColor(UIColor.black.cgColor)
+                    } else if meganeoption == 2 {
+                        g.setStrokeColor(UIColor.white.cgColor)
+                    }
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let r = len / 2 * 0.8
+                    let bold = r / 3
+                    
+                    g.setLineWidth(bold)
+                    
+                    g.beginPath()
+                    g.addArc(center: left, radius: r, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+                    g.strokePath()
+                    g.beginPath()
+                    g.addArc(center: right, radius: r, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+                    g.strokePath()
+                    
+                    let bridge = len - r * 2
+                    let th = atan2(dy, dx)
+                    g.beginPath()
+                    let x1 = right.x + cos(th) * r
+                    let y1 = right.y + sin(th) * r
+                    let x2 = right.x + cos(th) * (r + bridge)
+                    let y2 = right.y + sin(th) * (r + bridge)
+                    g.move(to:CGPoint(x:x1, y:y1))
+                    g.addLine(to:CGPoint(x:x2, y:y2))
+                    g.strokePath()
+                } else if meganeoption == 3 {
+                    g.setStrokeColor(UIColor.black.cgColor)
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let bold = len / 2
+                    g.setLineWidth(bold)
+                    
+                    let barlen = len
+                    let th = atan2(dy, dx)
+                    g.beginPath()
+                    let x1 = right.x - cos(th) * barlen
+                    let y1 = right.y - sin(th) * barlen
+                    let x2 = left.x + cos(th) * barlen
+                    let y2 = left.y + sin(th) * barlen
+                    g.move(to:CGPoint(x:x1, y:y1))
+                    g.addLine(to:CGPoint(x:x2, y:y2))
+                    g.strokePath()
+                } else {
+                    /*
+                    g.setStrokeColor(UIColor.black.cgColor)
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    g.setLineWidth(4)
+                    
+                    let th = atan2(dy, dx)
+                    g.beginPath()
+                    let x1 = right.x
+                    let y1 = right.y
+                    let x2 = right.x + cos(th) * len
+                    let y2 = right.y + sin(th) * len
+                    g.move(to:CGPoint(x:x1, y:y1))
+                    g.addLine(to:CGPoint(x:x2, y:y2))
+                    g.strokePath()
+
+                    g.setStrokeColor(UIColor.red.cgColor)
+                    g.beginPath()
+                    g.move(to:right)
+                    g.addLine(to:left)
+                    g.strokePath()
+*/
+                }
             }
         }
         let resimage = UIGraphicsGetImageFromCurrentImageContext()
@@ -297,6 +423,11 @@ g.strokePath()
                     }
                     print("zoom: \(zoom)")
  */
+                if meganeoption == 4 {
+                    meganeoption = 0
+                } else {
+                    meganeoption += 1
+                }
                 if FILTER_SUPPORT {
                     if nfilter == filters.count - 1 {
                         nfilter = 0
@@ -319,6 +450,11 @@ g.strokePath()
                     flashLED(flg: flashflg)
                     flashflg = !flashflg
  */
+                if meganeoption == 0 {
+                    meganeoption = 4
+                } else {
+                    meganeoption -= 1
+                }
                 if FILTER_SUPPORT {
                     if nfilter == 0 {
                         nfilter = filters.count - 1
