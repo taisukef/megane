@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
-import Photos
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     override func viewDidLoad() {
@@ -40,158 +39,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var output:AVCaptureVideoDataOutput!
     var session:AVCaptureSession!
     var camera:AVCaptureDevice!
-
-    // record
-    // add AVCaptureFileOutputRecordingDelegate
-    /*
-    let fileOutput = AVCaptureMovieFileOutput()
-    var isRecording = false
-    func startRecording() {
-        if self.isRecording {
-            return
-        }
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0] as String
-        let filePath : String? = "\(documentsDirectory)/temp.mp4"
-        let fileURL : NSURL = NSURL(fileURLWithPath: filePath!)
-        fileOutput.startRecording(to: fileURL as URL, recordingDelegate: self)
-        self.isRecording = true
-    }
-    func stopRecording() {
-        if !self.isRecording {
-            return
-        }
-     self.isRecording = false
-        fileOutput.stopRecording()
-    }
-    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputFileURL)
-        }, completionHandler: {(success, err) -> Void in
-            var message = ""
-            if success {
-                message = "保存しました"
-            } else {
-                message = "保存に失敗しました"
-            }
-            print(message)
-        })
-    }
- */
-    // recording
-    var isRecording = false
-    var frameCount: Int = 0
-    var fileWriter: AVAssetWriter!
-    var fileWriterAdaptor: AVAssetWriterInputPixelBufferAdaptor!
-    func startRecording() {
-        if self.isRecording {
-            return
-        }
-        self.isRecording = true
-
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0] as String
-        let dateFormater = DateFormatter()
-        dateFormater.locale = Locale(identifier: "ja_JP")
-        dateFormater.dateFormat = "yyyyMMddHHmmss"
-        let date = dateFormater.string(from: Date())
-        let filePath : String? = "\(documentsDirectory)/\(date).mp4"
-        let fileURL : URL = URL(fileURLWithPath: filePath!)
-        outputFileURL = fileURL
-        
-        self.fileWriter = try? AVAssetWriter(outputURL: fileURL, fileType: AVFileType.mp4) // <- AVFileTypeQuickTimeMovie
-        
-        let size = CGSize(width: 1920, height: 1080)
-        
-        let videoOutputSettings: Dictionary<String, Any> = [
-            AVVideoCodecKey: AVVideoCodecType.h264 as Any,
-            AVVideoWidthKey: size.width as Any,
-            AVVideoHeightKey: size.height as Any
-        ];
-        let videoInput: AVAssetWriterInput = AVAssetWriterInput(mediaType: AVMediaType.video, outputSettings: videoOutputSettings)
-        videoInput.expectsMediaDataInRealTime = true
-        self.fileWriter.add(videoInput)
-        
-        self.fileWriterAdaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: [
-            kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32ARGB),
-            kCVPixelBufferWidthKey as String: size.width,
-            kCVPixelBufferHeightKey as String: size.height
-            ])
-        
-        self.frameCount = 0
-        self.fileWriter.startWriting()
-        self.fileWriter.startSession(atSourceTime: kCMTimeZero)
-    }
-    var firstTime : CMTime = kCMTimeZero
-    var outputFileURL: URL!
-    func recordFrame(sampleBuffer: CMSampleBuffer) {
-        /*
-
-         case unknown
-         The current asset writer status is unknown.
-         case writing
-         The asset writer is writing.
-         case completed
-         The asset writer has completed writing successfully.
-         case failed
-         The asset writer has failed while writing.
-         case cancelled
-         The asset writer writing has been cancelled.
-         */
-        if self.fileWriter.status == .failed {
-            print("failed")
-        }
-        if self.fileWriter.status == .cancelled {
-            print("cancelled")
-        }
-        if self.fileWriter.status == .completed {
-            print("completed")
-        }
-        if self.fileWriter.status == .writing {
-            
-            if frameCount == 0 {
-                self.firstTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-            }
-            
-            if self.fileWriterAdaptor.assetWriterInput.isReadyForMoreMediaData {
-                let timeStamp: CMTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-                let frameTime: CMTime = CMTimeSubtract(timeStamp, self.firstTime)
-                let pxBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)! //video.synthesis(buffer: sampleBuffer)
-                self.fileWriterAdaptor.append(pxBuffer, withPresentationTime: frameTime)
-                frameCount += 1
-            }
-        }
-    }
-    func stopRecording() {
-        if !self.isRecording {
-            return
-        }
-        self.isRecording = false
-        self.fileWriter.endSession(atSourceTime: CMTimeMake(Int64((frameCount - 1) * 60), 60))
-        self.fileWriter.finishWriting(completionHandler:  {() -> Void in
-            print("finishWriting")
-            
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: self.outputFileURL)
-            }, completionHandler: {(success, err) -> Void in
-                var message = ""
-                if success {
-                    message = "保存しました"
-                } else {
-                    message = "保存に失敗しました"
-                }
-                print(message)
-            })
-        })
-    }
-    func toggleRecording() {
-        if self.isRecording {
-            stopRecording()
-        } else {
-            startRecording()
-        }
-    }
-        
+    
     var imageView1:UIImageView!
     var imageView2:UIImageView!
 
@@ -225,7 +73,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         camera = nil
     }
     let DETECT_QRCODE = false
-    let DETECT_FACE = false
+    let DETECT_FACE = true
     let FILTER_SUPPORT = false
     func configureCamera() {
         session = AVCaptureSession()
@@ -233,8 +81,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //session.sessionPreset = AVCaptureSession.Preset.cif352x288 // 34% 荒い
         //session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
         //session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
-        //session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
-        session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
+        session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
+        //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
         camera = AVCaptureDevice.default(
@@ -265,8 +113,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // filter
         //フィルタのカメラへの追加
 //        filterone = CIFilter(name: "CIPhotoEffectTransfer") // 古い写真のように
-       filterone = CIFilter(name: "CISepiaTone")
-
 
         var filter:CIFilter?
         filter = CIFilter(name: "CIComicEffect") // おもしろいけど、ちょっと重い VGAなら大丈夫！
@@ -311,10 +157,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   //      filter = CIFilter(name: "CISepiaTone")
 //        filter?.setValue(0.1, forKey: kCIInputIntensityKey) // default: 1.00 // 強さ
         
-        //session.addOutput(fileOutput) // for recording 1
-        
         session.startRunning()
-        
     }
     var filters:Array<CIFilter> = []
     var filterone:CIFilter?
@@ -343,22 +186,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             if DETECT_FACE {
                 image = drawMegane(image: image)
             }
-            
-            if !isRecording {
-                if let filter = filterone {
-                    filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
-                    image = UIImage(ciImage: filter.outputImage!)
-                }
+
+            if let filter = filterone {
+                filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
+                image = UIImage(ciImage: filter.outputImage!)
             }
 
             self.imageView1.image = image
             self.imageView2.image = image
         })
-        
-        // recording
-        if isRecording {
-            recordFrame(sampleBuffer: didOutput)
-        }
     }
     func resizeImage(image: UIImage, ratio: CGFloat) -> UIImage {
         if ratio == 1.0 {
@@ -416,7 +252,7 @@ g.strokePath()
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 0
+    var meganeoption = 4
     func drawMegane(image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
@@ -497,30 +333,47 @@ g.strokePath()
                     g.move(to:CGPoint(x:x1, y:y1))
                     g.addLine(to:CGPoint(x:x2, y:y2))
                     g.strokePath()
-                } else {
-                    /*
-                    g.setStrokeColor(UIColor.black.cgColor)
+                } else if meganeoption == 4 { // nekomimi
                     let dx = left.x - right.x
                     let dy = left.y - right.y
                     let len = sqrt(dx * dx + dy * dy)
-                    g.setLineWidth(4)
+                    let th = atan2(dy, dx);
                     
-                    let th = atan2(dy, dx)
-                    g.beginPath()
-                    let x1 = right.x
-                    let y1 = right.y
-                    let x2 = right.x + cos(th) * len
-                    let y2 = right.y + sin(th) * len
-                    g.move(to:CGPoint(x:x1, y:y1))
-                    g.addLine(to:CGPoint(x:x2, y:y2))
-                    g.strokePath()
+                    let ox = [ right.x, left.x ]
+                    let oy = [ right.y, left.y ]
+                    
+                    for n in 0...1 {
+                        let dir = CGFloat(n == 0 ? 1 : -1)
+                        let deg0 = 90 + 20 * dir
+                        let th0 = th + CGFloat.pi / 180 * CGFloat(deg0)
+                        let len0 = len * 1.3
+                        let x0 = ox[n] + cos(th0) * len0
+                        let y0 = oy[n] + sin(th0) * len0
+                        
+                        g.beginPath()
+                        g.setLineWidth(4)
+                        g.setFillColor(UIColor.white.cgColor)
 
-                    g.setStrokeColor(UIColor.red.cgColor)
-                    g.beginPath()
-                    g.move(to:right)
-                    g.addLine(to:left)
-                    g.strokePath()
-*/
+                        let th1 = th0 + CGFloat.pi / 180 * 20 * dir
+                        let len1 = len * 0.4
+                        let x1 = x0 + cos(th1) * len1
+                        let y1 = y0 + sin(th1) * len1
+                        g.move(to:CGPoint(x:x1, y:y1))
+
+                        let th2 = th1 + CGFloat.pi / 180 * 120 * dir
+                        let len2 = len * 0.6
+                        let x2 = x0 + cos(th2) * len2
+                        let y2 = y0 + sin(th2) * len2
+                        g.addLine(to:CGPoint(x:x2, y:y2))
+
+                        let th3 = th1 - CGFloat.pi / 180 * 120 * dir
+                        let len3 = len * 0.6
+                        let x3 = x0 + cos(th3) * len3
+                        let y3 = y0 + sin(th3) * len3
+                        g.addLine(to:CGPoint(x:x3, y:y3))
+                        g.addLine(to:CGPoint(x:x1, y:y1))
+                        g.fillPath()
+                    }
                 }
             }
         }
@@ -587,8 +440,11 @@ g.strokePath()
                     }
                     print("zoom: \(zoom)")
  */
-                //self.startRecording()
-                self.toggleRecording()
+                if meganeoption == 4 {
+                    meganeoption = 0
+                } else {
+                    meganeoption += 1
+                }
                 if FILTER_SUPPORT {
                     if nfilter == filters.count - 1 {
                         nfilter = 0
@@ -611,9 +467,11 @@ g.strokePath()
                     flashLED(flg: flashflg)
                     flashflg = !flashflg
  */
-//                self.stopRecording()
-                self.toggleRecording()
-
+                if meganeoption == 0 {
+                    meganeoption = 4
+                } else {
+                    meganeoption -= 1
+                }
                 if FILTER_SUPPORT {
                     if nfilter == 0 {
                         nfilter = filters.count - 1

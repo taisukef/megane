@@ -7,64 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69483FA720CB2C0200F217AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FA620CB2C0200F217AF /* AppDelegate.swift */; };
-		69483FA920CB2C0200F217AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FA820CB2C0200F217AF /* ViewController.swift */; };
-		69483FAC20CB2C0200F217AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAA20CB2C0200F217AF /* Main.storyboard */; };
-		69483FAE20CB2C0400F217AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAD20CB2C0400F217AF /* Assets.xcassets */; };
-		69483FB120CB2C0400F217AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */; };
-		69483FBC20CB2C0400F217AF /* meganeworldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FBB20CB2C0400F217AF /* meganeworldTests.swift */; };
-		69483FC720CB2C0400F217AF /* meganeworldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FC620CB2C0400F217AF /* meganeworldUITests.swift */; };
+		69BCC0D620FAA0CA0067F1ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BCC0D520FAA0CA0067F1ED /* AppDelegate.swift */; };
+		69BCC0D820FAA0CA0067F1ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BCC0D720FAA0CA0067F1ED /* ViewController.swift */; };
+		69BCC0DB20FAA0CA0067F1ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BCC0D920FAA0CA0067F1ED /* Main.storyboard */; };
+		69BCC0DD20FAA0CC0067F1ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69BCC0DC20FAA0CC0067F1ED /* Assets.xcassets */; };
+		69BCC0E020FAA0CC0067F1ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BCC0DE20FAA0CC0067F1ED /* LaunchScreen.storyboard */; };
+		69BCC0EB20FAA0CC0067F1ED /* nekomimiworldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BCC0EA20FAA0CC0067F1ED /* nekomimiworldTests.swift */; };
+		69BCC0F620FAA0CC0067F1ED /* nekomimiworldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BCC0F520FAA0CC0067F1ED /* nekomimiworldUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		69483FB820CB2C0400F217AF /* PBXContainerItemProxy */ = {
+		69BCC0E720FAA0CC0067F1ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 69483F9B20CB2C0200F217AF /* Project object */;
+			containerPortal = 69BCC0CA20FAA0CA0067F1ED /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 69483FA220CB2C0200F217AF;
-			remoteInfo = meganeworld;
+			remoteGlobalIDString = 69BCC0D120FAA0CA0067F1ED;
+			remoteInfo = nekomimiworld;
 		};
-		69483FC320CB2C0400F217AF /* PBXContainerItemProxy */ = {
+		69BCC0F220FAA0CC0067F1ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 69483F9B20CB2C0200F217AF /* Project object */;
+			containerPortal = 69BCC0CA20FAA0CA0067F1ED /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 69483FA220CB2C0200F217AF;
-			remoteInfo = meganeworld;
+			remoteGlobalIDString = 69BCC0D120FAA0CA0067F1ED;
+			remoteInfo = nekomimiworld;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		69483FA320CB2C0200F217AF /* meganeworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meganeworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		69483FA620CB2C0200F217AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		69483FA820CB2C0200F217AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		69483FAB20CB2C0200F217AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		69483FAD20CB2C0400F217AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		69483FB020CB2C0400F217AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		69483FB220CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69483FB720CB2C0400F217AF /* meganeworldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeworldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69483FBB20CB2C0400F217AF /* meganeworldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeworldTests.swift; sourceTree = "<group>"; };
-		69483FBD20CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeworldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69483FC620CB2C0400F217AF /* meganeworldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeworldUITests.swift; sourceTree = "<group>"; };
-		69483FC820CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69BCC0D220FAA0CA0067F1ED /* nekomimiworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nekomimiworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69BCC0D520FAA0CA0067F1ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		69BCC0D720FAA0CA0067F1ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		69BCC0DA20FAA0CA0067F1ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69BCC0DC20FAA0CC0067F1ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69BCC0DF20FAA0CC0067F1ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		69BCC0E120FAA0CC0067F1ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69BCC0E620FAA0CC0067F1ED /* nekomimiworldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nekomimiworldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69BCC0EA20FAA0CC0067F1ED /* nekomimiworldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nekomimiworldTests.swift; sourceTree = "<group>"; };
+		69BCC0EC20FAA0CC0067F1ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69BCC0F120FAA0CC0067F1ED /* nekomimiworldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nekomimiworldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69BCC0F520FAA0CC0067F1ED /* nekomimiworldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nekomimiworldUITests.swift; sourceTree = "<group>"; };
+		69BCC0F720FAA0CC0067F1ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		69483FA020CB2C0200F217AF /* Frameworks */ = {
+		69BCC0CF20FAA0CA0067F1ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69483FB420CB2C0400F217AF /* Frameworks */ = {
+		69BCC0E320FAA0CC0067F1ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69483FBF20CB2C0400F217AF /* Frameworks */ = {
+		69BCC0EE20FAA0CC0067F1ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -74,137 +74,137 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		69483F9A20CB2C0200F217AF = {
+		69BCC0C920FAA0CA0067F1ED = {
 			isa = PBXGroup;
 			children = (
-				69483FA520CB2C0200F217AF /* meganeworld */,
-				69483FBA20CB2C0400F217AF /* meganeworldTests */,
-				69483FC520CB2C0400F217AF /* meganeworldUITests */,
-				69483FA420CB2C0200F217AF /* Products */,
+				69BCC0D420FAA0CA0067F1ED /* nekomimiworld */,
+				69BCC0E920FAA0CC0067F1ED /* nekomimiworldTests */,
+				69BCC0F420FAA0CC0067F1ED /* nekomimiworldUITests */,
+				69BCC0D320FAA0CA0067F1ED /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		69483FA420CB2C0200F217AF /* Products */ = {
+		69BCC0D320FAA0CA0067F1ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				69483FA320CB2C0200F217AF /* meganeworld.app */,
-				69483FB720CB2C0400F217AF /* meganeworldTests.xctest */,
-				69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */,
+				69BCC0D220FAA0CA0067F1ED /* nekomimiworld.app */,
+				69BCC0E620FAA0CC0067F1ED /* nekomimiworldTests.xctest */,
+				69BCC0F120FAA0CC0067F1ED /* nekomimiworldUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		69483FA520CB2C0200F217AF /* meganeworld */ = {
+		69BCC0D420FAA0CA0067F1ED /* nekomimiworld */ = {
 			isa = PBXGroup;
 			children = (
-				69483FA620CB2C0200F217AF /* AppDelegate.swift */,
-				69483FA820CB2C0200F217AF /* ViewController.swift */,
-				69483FAA20CB2C0200F217AF /* Main.storyboard */,
-				69483FAD20CB2C0400F217AF /* Assets.xcassets */,
-				69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */,
-				69483FB220CB2C0400F217AF /* Info.plist */,
+				69BCC0D520FAA0CA0067F1ED /* AppDelegate.swift */,
+				69BCC0D720FAA0CA0067F1ED /* ViewController.swift */,
+				69BCC0D920FAA0CA0067F1ED /* Main.storyboard */,
+				69BCC0DC20FAA0CC0067F1ED /* Assets.xcassets */,
+				69BCC0DE20FAA0CC0067F1ED /* LaunchScreen.storyboard */,
+				69BCC0E120FAA0CC0067F1ED /* Info.plist */,
 			);
-			path = meganeworld;
+			path = nekomimiworld;
 			sourceTree = "<group>";
 		};
-		69483FBA20CB2C0400F217AF /* meganeworldTests */ = {
+		69BCC0E920FAA0CC0067F1ED /* nekomimiworldTests */ = {
 			isa = PBXGroup;
 			children = (
-				69483FBB20CB2C0400F217AF /* meganeworldTests.swift */,
-				69483FBD20CB2C0400F217AF /* Info.plist */,
+				69BCC0EA20FAA0CC0067F1ED /* nekomimiworldTests.swift */,
+				69BCC0EC20FAA0CC0067F1ED /* Info.plist */,
 			);
-			path = meganeworldTests;
+			path = nekomimiworldTests;
 			sourceTree = "<group>";
 		};
-		69483FC520CB2C0400F217AF /* meganeworldUITests */ = {
+		69BCC0F420FAA0CC0067F1ED /* nekomimiworldUITests */ = {
 			isa = PBXGroup;
 			children = (
-				69483FC620CB2C0400F217AF /* meganeworldUITests.swift */,
-				69483FC820CB2C0400F217AF /* Info.plist */,
+				69BCC0F520FAA0CC0067F1ED /* nekomimiworldUITests.swift */,
+				69BCC0F720FAA0CC0067F1ED /* Info.plist */,
 			);
-			path = meganeworldUITests;
+			path = nekomimiworldUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		69483FA220CB2C0200F217AF /* meganeworld */ = {
+		69BCC0D120FAA0CA0067F1ED /* nekomimiworld */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69483FCB20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworld" */;
+			buildConfigurationList = 69BCC0FA20FAA0CC0067F1ED /* Build configuration list for PBXNativeTarget "nekomimiworld" */;
 			buildPhases = (
-				69483F9F20CB2C0200F217AF /* Sources */,
-				69483FA020CB2C0200F217AF /* Frameworks */,
-				69483FA120CB2C0200F217AF /* Resources */,
+				69BCC0CE20FAA0CA0067F1ED /* Sources */,
+				69BCC0CF20FAA0CA0067F1ED /* Frameworks */,
+				69BCC0D020FAA0CA0067F1ED /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = meganeworld;
-			productName = meganeworld;
-			productReference = 69483FA320CB2C0200F217AF /* meganeworld.app */;
+			name = nekomimiworld;
+			productName = nekomimiworld;
+			productReference = 69BCC0D220FAA0CA0067F1ED /* nekomimiworld.app */;
 			productType = "com.apple.product-type.application";
 		};
-		69483FB620CB2C0400F217AF /* meganeworldTests */ = {
+		69BCC0E520FAA0CC0067F1ED /* nekomimiworldTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69483FCE20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldTests" */;
+			buildConfigurationList = 69BCC0FD20FAA0CC0067F1ED /* Build configuration list for PBXNativeTarget "nekomimiworldTests" */;
 			buildPhases = (
-				69483FB320CB2C0400F217AF /* Sources */,
-				69483FB420CB2C0400F217AF /* Frameworks */,
-				69483FB520CB2C0400F217AF /* Resources */,
+				69BCC0E220FAA0CC0067F1ED /* Sources */,
+				69BCC0E320FAA0CC0067F1ED /* Frameworks */,
+				69BCC0E420FAA0CC0067F1ED /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				69483FB920CB2C0400F217AF /* PBXTargetDependency */,
+				69BCC0E820FAA0CC0067F1ED /* PBXTargetDependency */,
 			);
-			name = meganeworldTests;
-			productName = meganeworldTests;
-			productReference = 69483FB720CB2C0400F217AF /* meganeworldTests.xctest */;
+			name = nekomimiworldTests;
+			productName = nekomimiworldTests;
+			productReference = 69BCC0E620FAA0CC0067F1ED /* nekomimiworldTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		69483FC120CB2C0400F217AF /* meganeworldUITests */ = {
+		69BCC0F020FAA0CC0067F1ED /* nekomimiworldUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69483FD120CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldUITests" */;
+			buildConfigurationList = 69BCC10020FAA0CC0067F1ED /* Build configuration list for PBXNativeTarget "nekomimiworldUITests" */;
 			buildPhases = (
-				69483FBE20CB2C0400F217AF /* Sources */,
-				69483FBF20CB2C0400F217AF /* Frameworks */,
-				69483FC020CB2C0400F217AF /* Resources */,
+				69BCC0ED20FAA0CC0067F1ED /* Sources */,
+				69BCC0EE20FAA0CC0067F1ED /* Frameworks */,
+				69BCC0EF20FAA0CC0067F1ED /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				69483FC420CB2C0400F217AF /* PBXTargetDependency */,
+				69BCC0F320FAA0CC0067F1ED /* PBXTargetDependency */,
 			);
-			name = meganeworldUITests;
-			productName = meganeworldUITests;
-			productReference = 69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */;
+			name = nekomimiworldUITests;
+			productName = nekomimiworldUITests;
+			productReference = 69BCC0F120FAA0CC0067F1ED /* nekomimiworldUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		69483F9B20CB2C0200F217AF /* Project object */ = {
+		69BCC0CA20FAA0CA0067F1ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = taisukef;
 				TargetAttributes = {
-					69483FA220CB2C0200F217AF = {
-						CreatedOnToolsVersion = 9.4;
+					69BCC0D120FAA0CA0067F1ED = {
+						CreatedOnToolsVersion = 9.4.1;
 					};
-					69483FB620CB2C0400F217AF = {
-						CreatedOnToolsVersion = 9.4;
-						TestTargetID = 69483FA220CB2C0200F217AF;
+					69BCC0E520FAA0CC0067F1ED = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 69BCC0D120FAA0CA0067F1ED;
 					};
-					69483FC120CB2C0400F217AF = {
-						CreatedOnToolsVersion = 9.4;
-						TestTargetID = 69483FA220CB2C0200F217AF;
+					69BCC0F020FAA0CC0067F1ED = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 69BCC0D120FAA0CA0067F1ED;
 					};
 				};
 			};
-			buildConfigurationList = 69483F9E20CB2C0200F217AF /* Build configuration list for PBXProject "meganeworld" */;
+			buildConfigurationList = 69BCC0CD20FAA0CA0067F1ED /* Build configuration list for PBXProject "nekomimiworld" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -212,37 +212,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 69483F9A20CB2C0200F217AF;
-			productRefGroup = 69483FA420CB2C0200F217AF /* Products */;
+			mainGroup = 69BCC0C920FAA0CA0067F1ED;
+			productRefGroup = 69BCC0D320FAA0CA0067F1ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				69483FA220CB2C0200F217AF /* meganeworld */,
-				69483FB620CB2C0400F217AF /* meganeworldTests */,
-				69483FC120CB2C0400F217AF /* meganeworldUITests */,
+				69BCC0D120FAA0CA0067F1ED /* nekomimiworld */,
+				69BCC0E520FAA0CC0067F1ED /* nekomimiworldTests */,
+				69BCC0F020FAA0CC0067F1ED /* nekomimiworldUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		69483FA120CB2C0200F217AF /* Resources */ = {
+		69BCC0D020FAA0CA0067F1ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69483FB120CB2C0400F217AF /* LaunchScreen.storyboard in Resources */,
-				69483FAE20CB2C0400F217AF /* Assets.xcassets in Resources */,
-				69483FAC20CB2C0200F217AF /* Main.storyboard in Resources */,
+				69BCC0E020FAA0CC0067F1ED /* LaunchScreen.storyboard in Resources */,
+				69BCC0DD20FAA0CC0067F1ED /* Assets.xcassets in Resources */,
+				69BCC0DB20FAA0CA0067F1ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69483FB520CB2C0400F217AF /* Resources */ = {
+		69BCC0E420FAA0CC0067F1ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69483FC020CB2C0400F217AF /* Resources */ = {
+		69BCC0EF20FAA0CC0067F1ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,59 +252,59 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		69483F9F20CB2C0200F217AF /* Sources */ = {
+		69BCC0CE20FAA0CA0067F1ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69483FA920CB2C0200F217AF /* ViewController.swift in Sources */,
-				69483FA720CB2C0200F217AF /* AppDelegate.swift in Sources */,
+				69BCC0D820FAA0CA0067F1ED /* ViewController.swift in Sources */,
+				69BCC0D620FAA0CA0067F1ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69483FB320CB2C0400F217AF /* Sources */ = {
+		69BCC0E220FAA0CC0067F1ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69483FBC20CB2C0400F217AF /* meganeworldTests.swift in Sources */,
+				69BCC0EB20FAA0CC0067F1ED /* nekomimiworldTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69483FBE20CB2C0400F217AF /* Sources */ = {
+		69BCC0ED20FAA0CC0067F1ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69483FC720CB2C0400F217AF /* meganeworldUITests.swift in Sources */,
+				69BCC0F620FAA0CC0067F1ED /* nekomimiworldUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		69483FB920CB2C0400F217AF /* PBXTargetDependency */ = {
+		69BCC0E820FAA0CC0067F1ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 69483FA220CB2C0200F217AF /* meganeworld */;
-			targetProxy = 69483FB820CB2C0400F217AF /* PBXContainerItemProxy */;
+			target = 69BCC0D120FAA0CA0067F1ED /* nekomimiworld */;
+			targetProxy = 69BCC0E720FAA0CC0067F1ED /* PBXContainerItemProxy */;
 		};
-		69483FC420CB2C0400F217AF /* PBXTargetDependency */ = {
+		69BCC0F320FAA0CC0067F1ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 69483FA220CB2C0200F217AF /* meganeworld */;
-			targetProxy = 69483FC320CB2C0400F217AF /* PBXContainerItemProxy */;
+			target = 69BCC0D120FAA0CA0067F1ED /* nekomimiworld */;
+			targetProxy = 69BCC0F220FAA0CC0067F1ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		69483FAA20CB2C0200F217AF /* Main.storyboard */ = {
+		69BCC0D920FAA0CA0067F1ED /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69483FAB20CB2C0200F217AF /* Base */,
+				69BCC0DA20FAA0CA0067F1ED /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */ = {
+		69BCC0DE20FAA0CC0067F1ED /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69483FB020CB2C0400F217AF /* Base */,
+				69BCC0DF20FAA0CC0067F1ED /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		69483FC920CB2C0400F217AF /* Debug */ = {
+		69BCC0F820FAA0CC0067F1ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -372,7 +372,7 @@
 			};
 			name = Debug;
 		};
-		69483FCA20CB2C0400F217AF /* Release */ = {
+		69BCC0F920FAA0CC0067F1ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -426,166 +426,164 @@
 			};
 			name = Release;
 		};
-		69483FCC20CB2C0400F217AF /* Debug */ = {
+		69BCC0FB20FAA0CC0067F1ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeworld/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				INFOPLIST_FILE = nekomimiworld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworld;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.nekomimiworld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		69483FCD20CB2C0400F217AF /* Release */ = {
+		69BCC0FC20FAA0CC0067F1ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeworld/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				INFOPLIST_FILE = nekomimiworld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworld;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.nekomimiworld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		69483FCF20CB2C0400F217AF /* Debug */ = {
+		69BCC0FE20FAA0CC0067F1ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeworldTests/Info.plist;
+				INFOPLIST_FILE = nekomimiworldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldTests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.nekomimiworldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/meganeworld.app/meganeworld";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nekomimiworld.app/nekomimiworld";
 			};
 			name = Debug;
 		};
-		69483FD020CB2C0400F217AF /* Release */ = {
+		69BCC0FF20FAA0CC0067F1ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeworldTests/Info.plist;
+				INFOPLIST_FILE = nekomimiworldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldTests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.nekomimiworldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/meganeworld.app/meganeworld";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nekomimiworld.app/nekomimiworld";
 			};
 			name = Release;
 		};
-		69483FD220CB2C0400F217AF /* Debug */ = {
+		69BCC10120FAA0CC0067F1ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeworldUITests/Info.plist;
+				INFOPLIST_FILE = nekomimiworldUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.nekomimiworldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = meganeworld;
+				TEST_TARGET_NAME = nekomimiworld;
 			};
 			name = Debug;
 		};
-		69483FD320CB2C0400F217AF /* Release */ = {
+		69BCC10220FAA0CC0067F1ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2TF2C92PA;
-				INFOPLIST_FILE = meganeworldUITests/Info.plist;
+				INFOPLIST_FILE = nekomimiworldUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.meganeworldUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = fukuno.jig.jp.nekomimiworldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = meganeworld;
+				TEST_TARGET_NAME = nekomimiworld;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		69483F9E20CB2C0200F217AF /* Build configuration list for PBXProject "meganeworld" */ = {
+		69BCC0CD20FAA0CA0067F1ED /* Build configuration list for PBXProject "nekomimiworld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69483FC920CB2C0400F217AF /* Debug */,
-				69483FCA20CB2C0400F217AF /* Release */,
+				69BCC0F820FAA0CC0067F1ED /* Debug */,
+				69BCC0F920FAA0CC0067F1ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69483FCB20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworld" */ = {
+		69BCC0FA20FAA0CC0067F1ED /* Build configuration list for PBXNativeTarget "nekomimiworld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69483FCC20CB2C0400F217AF /* Debug */,
-				69483FCD20CB2C0400F217AF /* Release */,
+				69BCC0FB20FAA0CC0067F1ED /* Debug */,
+				69BCC0FC20FAA0CC0067F1ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69483FCE20CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldTests" */ = {
+		69BCC0FD20FAA0CC0067F1ED /* Build configuration list for PBXNativeTarget "nekomimiworldTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69483FCF20CB2C0400F217AF /* Debug */,
-				69483FD020CB2C0400F217AF /* Release */,
+				69BCC0FE20FAA0CC0067F1ED /* Debug */,
+				69BCC0FF20FAA0CC0067F1ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69483FD120CB2C0400F217AF /* Build configuration list for PBXNativeTarget "meganeworldUITests" */ = {
+		69BCC10020FAA0CC0067F1ED /* Build configuration list for PBXNativeTarget "nekomimiworldUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69483FD220CB2C0400F217AF /* Debug */,
-				69483FD320CB2C0400F217AF /* Release */,
+				69BCC10120FAA0CC0067F1ED /* Debug */,
+				69BCC10220FAA0CC0067F1ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 69483F9B20CB2C0200F217AF /* Project object */;
+	rootObject = 69BCC0CA20FAA0CA0067F1ED /* Project object */;
 }
