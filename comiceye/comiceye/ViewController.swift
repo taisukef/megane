@@ -98,7 +98,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         
         output = AVCaptureVideoDataOutput() // AVCapturePhotoOutput() 写真用
-        output?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable : Int(kCVPixelFormatType_32BGRA)] as! [String : Any]
+        output?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable : Int(kCVPixelFormatType_32BGRA)] as? [String : Any]
         
         let queue:DispatchQueue = DispatchQueue(label: "myqueue", attributes: .concurrent)
         output.setSampleBufferDelegate(self, queue: queue)
@@ -119,7 +119,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        filter!.setValue(6, forKey: kCIAttributeTypeDistance)
         filters.append(filter!)
 
-        filter = CIFilter(name: "CIColorPosterize") // おもしろいけど、ちょっと重い VGAなら大丈夫！
+        filter = CIFilter(name: "CICMYKHalftone", parameters: [ "inputWidth": 10 ])! // 印刷物っぽく
+        filters.append(filter!)
+
+        filter = CIFilter(name: "CICrystallize", parameters: [ "inputRadius": 20 ])! // クリスタル風
+        filters.append(filter!)
+
+//        filter = CIFilter(name: "CILineOverlay") // 線画・・・真っ暗になる？
+//        filters.append(filter!)
+
+        filter = CIFilter(name: "CIHighlightShadowAdjust") // 線画
+        filters.append(filter!)
+
+        //        filter = CIFilter(name: "CIDepthOfField") // 周りがぼける
+//        filters.append(filter!)
+        
+        filter = CIFilter(name: "CIPhotoEffectTransfer") // 古い写真のように
+        filters.append(filter!)
+        
+        filter = CIFilter(name: "CIPhotoEffectTonal") // モノクロ写真のように
+        filters.append(filter!)
+        
+        filter = CIFilter(name: "CIColorPosterize") // 減色モード
         filters.append(filter!)
 
         //filter = CIFilter(name: "CIPointillize")
@@ -127,8 +148,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        filter = CIFilter(name: "CIGloom") // 変化少ない
 
         //filter = CIFilter(name: "CIDepthOfField") // 遅い重い、ピンとあわない？
-        filter = CIFilter(name: "CIBloom") // ふわっとする
-        filters.append(filter!)
+//        filter = CIFilter(name: "CIBloom") // ふわっとする
+//        filters.append(filter!)
         //filter = CIFilter(name: "CISharpenLuminance")
         //filter = CIFilter(name: "CIHoleDistortion") // うごかない
         //filter = CIFilter(name: "CITorusLensDistortion") // トーラスがうつる
@@ -140,12 +161,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //filter?.setValue(10.0, forKey: kCIInputRadiusKey) // default 1.00
         //filter?.setValue(0.8, forKey: kCIInputIntensityKey) // default 0.0
         
-        filter = CIFilter(name: "CIPhotoEffectTransfer") // 古い写真のように
-        filters.append(filter!)
-        
-        filter = CIFilter(name: "CIPhotoEffectTonal") // モノクロ写真のように
-        filters.append(filter!)
-        
         //filter = CIFilter(name: "CIMedianFilter") // ノイズ除去、きいてる？
         //filter = CIFilter(name: "CISpotLight") // スポットライトがあたるように、しぶい！
         // filter = CIFilter(name: "CISpotColor") // 色変換？おもしろい
@@ -153,10 +168,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   //      filter = CIFilter(name: "CISepiaTone")
 //        filter?.setValue(0.1, forKey: kCIInputIntensityKey) // default: 1.00 // 強さ
         
+//        toonFilter.threshold = 1
+        
         session.startRunning()
     }
     var filters:Array<CIFilter> = []
     var nfilter = 0
+//    var toonFilter = GPUImageSmoothToonFilter()
     var zoom:CGFloat = 1.0
     func captureOutput(_: AVCaptureOutput, didOutput: CMSampleBuffer, from: AVCaptureConnection) {
         //        from.videoOrientation = .portrait //デバイスの向きを設定、縦の時
@@ -165,12 +183,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             var image = self.imageFromSampleBuffer(sampleBuffer: didOutput)
             
             // filter
+            
             if filters.count > 0 {
                 let filter = filters[nfilter]
                 filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
                 image = UIImage(ciImage: filter.outputImage!)
             }
-
+ 
+  //          image = toonFilter.imageByFilteringImage(image)
+            
             image = resizeImage(image: image, ratio: zoom)
             if DETECT_QRCODE {
                 image = drawQR(image: image)
@@ -203,9 +224,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let font = UIFont.boldSystemFont(ofSize: 14 * 4)
         let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         let textFontAttributes = [
-            NSAttributedStringKey.font: font,
-            NSAttributedStringKey.foregroundColor: UIColor.black,
-            NSAttributedStringKey.paragraphStyle: textStyle
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.paragraphStyle: textStyle
         ]
 
         // 顔認識もおもしろい
