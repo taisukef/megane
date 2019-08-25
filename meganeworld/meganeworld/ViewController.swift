@@ -10,6 +10,18 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
+extension UIColor {
+    convenience init(value: Int, alpha: CGFloat) {
+        let r = CGFloat(((value >> 16) & 255)) / 255
+        let g = CGFloat(((value >> 8) & 255)) / 255
+        let b = CGFloat(value & 255) / 255
+        self.init(red: r, green: g, blue: b, alpha: min(max(alpha, 0), 1))
+    }
+    convenience init(value: Int) {
+        self.init(value: value, alpha: 1.0)
+    }
+}
+
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +112,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         
         output = AVCaptureVideoDataOutput() // AVCapturePhotoOutput() 写真用
-        output?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable : Int(kCVPixelFormatType_32BGRA)] as! [String : Any]
+        output?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable : Int(kCVPixelFormatType_32BGRA)] as? [String : Any]
         
         let queue:DispatchQueue = DispatchQueue(label: "myqueue", attributes: .concurrent)
         output.setSampleBufferDelegate(self, queue: queue)
@@ -112,9 +124,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // filter
         //フィルタのカメラへの追加
-        filterone = CIFilter(name: "CIPhotoEffectTransfer") // 古い写真のように
+        //filterone = CIFilter(name: "CIPhotoEffectTransfer") // 古い写真のように
 
         var filter:CIFilter?
+        filter = CIFilter(name: "CITwirlDistortion") // 視界がひずむ
+        filters.append(filter!)
+
         filter = CIFilter(name: "CIComicEffect") // おもしろいけど、ちょっと重い VGAなら大丈夫！
         filters.append(filter!)
 //        filter = CIFilter(name: kCICategoryHalftoneEffect) // error
@@ -136,7 +151,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //filter = CIFilter(name: "CISharpenLuminance")
         //filter = CIFilter(name: "CIHoleDistortion") // うごかない
         //filter = CIFilter(name: "CITorusLensDistortion") // トーラスがうつる
-        //filter = CIFilter(name: "CITwirlDistortion") // 視界がひずむ
         //filter = CIFilter(name: "CITriangleKaleidoscope") // 万華鏡、エラー
         //filter = CIFilter(name: "CITriangleTile") // エラー
         
@@ -252,7 +266,8 @@ g.strokePath()
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 0
+    var meganeoption = 4
+    let nmeganeoption = 5
     func drawMegane(image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
@@ -260,8 +275,18 @@ g.strokePath()
         let g = UIGraphicsGetCurrentContext()!
         
         // 顔認識
+        /*
         let detector : CIDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options:[CIDetectorAccuracy: CIDetectorAccuracyLow] )!
         let features : NSArray = detector.features(in: CIImage(image: image)!) as NSArray
+*/
+        let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+        
+        // 取得するパラメーターを指定する
+        let options = [CIDetectorSmile : true, CIDetectorEyeBlink : true]
+        
+        // 画像から特徴を抽出する
+        let features = detector!.features(in: CIImage(image: image)!, options: options)
+
         if features.count > 0 {
             for feature in features as! [CIFaceFeature] {
                 var rect: CGRect = feature.bounds
@@ -333,6 +358,73 @@ g.strokePath()
                     g.move(to:CGPoint(x:x1, y:y1))
                     g.addLine(to:CGPoint(x:x2, y:y2))
                     g.strokePath()
+                } else if (meganeoption == 4) {
+                    // SDGs Megane
+                    let SDGS_COLORS = [
+                        UIColor.init(value: 0xE5243B),
+                        UIColor.init(value: 0xDDA63A),
+                        UIColor.init(value: 0x4C9F38),
+                        UIColor.init(value: 0xC5192D),
+                        UIColor.init(value: 0xFF3A21),
+                        UIColor.init(value: 0x26BDE2),
+                        UIColor.init(value: 0xFCC30B),
+                        UIColor.init(value: 0xA21942),
+                        UIColor.init(value: 0xFD6925),
+                        UIColor.init(value: 0xDD1367),
+                        UIColor.init(value: 0xFD9D24),
+                        UIColor.init(value: 0xBF8B2E),
+                        UIColor.init(value: 0x3F7E44),
+                        UIColor.init(value: 0x0A97D9),
+                        UIColor.init(value: 0x56C02B),
+                        UIColor.init(value: 0x00689D),
+                        UIColor.init(value: 0x19486A),
+                    ]
+                    let COLORS = [ 5, 6, 7, 8, 1, 2, 3, 4, 9, 14, 15, 16, 17, 10, 11, 12, 13 ]
+                    
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let r = len / 3
+                    let bold = r / 2
+                    
+                    g.setLineWidth(bold)
+                    
+                    let thgap = Double.pi * 2 / 360
+                    
+                    // bridge
+                    g.setStrokeColor(SDGS_COLORS[COLORS[8] - 1].cgColor)
+                    let cx = (left.x + right.x) / 2
+                    let cy = (left.y + right.y) / 2
+                    let bridge = r * 0.35
+                    let th = atan2(dy, dx) - CGFloat(Double.pi / 2)
+                    let x1 = cx + cos(th) * bridge
+                    let y1 = cy + sin(th) * bridge
+                    //let dth = Double.pi * 2 / 8
+                    let dth = Double.pi * 2.5 / 8
+                    let th1 = Double.pi - dth / 2 + Double(th) + thgap
+                    let th2 = th1 + dth - thgap * 2
+                    g.beginPath()
+                    g.addArc(center: CGPoint(x: x1, y: y1), radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
+                    g.strokePath()
+                    
+                    // left
+                    for i in 0..<8 {
+                        g.setStrokeColor(SDGS_COLORS[COLORS[i] - 1].cgColor)
+                        g.beginPath()
+                        let th1 = Double.pi * 2 / 8 * Double(i) + thgap + Double(th)
+                        let th2 = th1 + Double.pi * 2 / 8 - thgap * 2
+                        g.addArc(center: left, radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
+                        g.strokePath()
+                    }
+                    // right
+                    for i in 0..<8 {
+                        g.setStrokeColor(SDGS_COLORS[COLORS[i + 9] - 1].cgColor)
+                        let th1 = Double.pi * 2 / 8 * Double(i) + thgap + Double(th)
+                        let th2 = th1 + Double.pi * 2 / 8 - thgap * 2
+                        g.beginPath()
+                        g.addArc(center: right, radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
+                        g.strokePath()
+                    }
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
@@ -423,7 +515,7 @@ g.strokePath()
                     }
                     print("zoom: \(zoom)")
  */
-                if meganeoption == 4 {
+                if meganeoption == nmeganeoption {
                     meganeoption = 0
                 } else {
                     meganeoption += 1

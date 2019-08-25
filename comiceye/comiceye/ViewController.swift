@@ -111,10 +111,31 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // filter
         //フィルタのカメラへの追加
         var filter:CIFilter?
+        
+        
         filter = CIFilter(name: "CIComicEffect") // おもしろいけど、ちょっと重い VGAなら大丈夫！
         filters.append(filter!)
 //        filter = CIFilter(name: kCICategoryHalftoneEffect) // error
         
+        // 元画像幅高さ
+        let iw: CGFloat = 640
+        let ih: CGFloat = 480
+        
+        // 左右反転
+        filter = CIFilter(name: "CIAffineTransform")
+        filter!.setValue(CGAffineTransform(a: -1, b: 0, c: 0, d: 1, tx: iw, ty: 0), forKey: kCIInputTransformKey)
+        filters.append(filter!)
+
+        // 上下反転
+        filter = CIFilter(name: "CIAffineTransform")
+        filter!.setValue(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: ih), forKey: kCIInputTransformKey)
+        filters.append(filter!)
+        
+        // 上下左右反転
+        filter = CIFilter(name: "CIAffineTransform")
+        filter!.setValue(CGAffineTransform(a: -1, b: 0, c: 0, d: -1, tx: iw, ty: ih), forKey: kCIInputTransformKey)
+        filters.append(filter!)
+
         filter = CIFilter(name: "CIEdgeWork")
 //        filter!.setValue(6, forKey: kCIAttributeTypeDistance)
         filters.append(filter!)
