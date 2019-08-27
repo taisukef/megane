@@ -1,5 +1,5 @@
 # megane
-megane - Smartphone MR for iPhone in Swift4
+megane - Smartphone MR for iPhone in Swift5
 
 nekomimiworld  
 http://fukuno.jig.jp/2182  
