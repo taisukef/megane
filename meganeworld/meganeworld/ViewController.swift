@@ -33,7 +33,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let w = self.view.frame.width
         let h = self.view.frame.height
         let w2 = w / 2
-        let h2 = w2 * 1080 / 1920
+        //        let h2 = w2 * 1080 / 1920
+        //let h2 = w2 * 480 / 640
+        let h2 = w2 / 1280 * 720
         let y = (h - h2) / 2
         self.imageView1.frame = CGRect(x:0, y:y, width:w2, height:h2)
         self.imageView2.frame = CGRect(x:self.view.frame.width / 2, y:y, width:w2, height:h2)
@@ -92,8 +94,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // iPhone Xで実験
         //session.sessionPreset = AVCaptureSession.Preset.cif352x288 // 34% 荒い
         //session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
-        //session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
-        session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
+        session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
+        //session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
         //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
@@ -253,11 +255,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 
                 // QRコードを上書き！
                 g.beginPath()
-            g.setFillColor(UIColor.white.cgColor)
-            g.setStrokeColor(UIColor.white.cgColor)
+                g.setFillColor(UIColor.white.cgColor)
+                g.setStrokeColor(UIColor.white.cgColor)
                 g.addRect(rect)
-            g.fillPath()
-g.strokePath()
+                g.fillPath()
+                g.strokePath()
 
                 feature.messageString?.draw(in: rect, withAttributes: textFontAttributes)
             }
@@ -379,7 +381,7 @@ g.strokePath()
                         UIColor.init(value: 0x00689D),
                         UIColor.init(value: 0x19486A),
                     ]
-                    let COLORS = [ 5, 6, 7, 8, 1, 2, 3, 4, 9, 14, 15, 16, 17, 10, 11, 12, 13 ]
+                    let COLORS = [ 14,15,16,17,1,2,3,4,5,10,11,12,13,6,7,8,9 ]
                     
                     let dx = left.x - right.x
                     let dy = left.y - right.y
@@ -396,22 +398,24 @@ g.strokePath()
                     let cx = (left.x + right.x) / 2
                     let cy = (left.y + right.y) / 2
                     let bridge = r * 0.35
-                    let th = atan2(dy, dx) - CGFloat(Double.pi / 2)
-                    let x1 = cx + cos(th) * bridge
-                    let y1 = cy + sin(th) * bridge
+                    let th = atan2(dy, dx)
+                    let bth = th - CGFloat(Double.pi / 2)
+                    let x1 = cx + cos(bth) * bridge
+                    let y1 = cy + sin(bth) * bridge
                     //let dth = Double.pi * 2 / 8
                     let dth = Double.pi * 2.5 / 8
-                    let th1 = Double.pi - dth / 2 + Double(th) + thgap
+                    let th1 = Double.pi - dth / 2 + Double(bth) + thgap
                     let th2 = th1 + dth - thgap * 2
                     g.beginPath()
                     g.addArc(center: CGPoint(x: x1, y: y1), radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
                     g.strokePath()
                     
                     // left
+                    let gth = th - CGFloat(Double.pi)
                     for i in 0..<8 {
                         g.setStrokeColor(SDGS_COLORS[COLORS[i] - 1].cgColor)
                         g.beginPath()
-                        let th1 = Double.pi * 2 / 8 * Double(i) + thgap + Double(th)
+                        let th1 = Double.pi * 2 / 8 * Double(i) + thgap + Double(gth)
                         let th2 = th1 + Double.pi * 2 / 8 - thgap * 2
                         g.addArc(center: left, radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
                         g.strokePath()
@@ -419,7 +423,7 @@ g.strokePath()
                     // right
                     for i in 0..<8 {
                         g.setStrokeColor(SDGS_COLORS[COLORS[i + 9] - 1].cgColor)
-                        let th1 = Double.pi * 2 / 8 * Double(i) + thgap + Double(th)
+                        let th1 = Double.pi * 2 / 8 * Double(i) + thgap + Double(gth)
                         let th2 = th1 + Double.pi * 2 / 8 - thgap * 2
                         g.beginPath()
                         g.addArc(center: right, radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
@@ -484,9 +488,9 @@ g.strokePath()
             let vol = audioSession.outputVolume
             initialVolume = Double(vol.description)!
             if initialVolume > 0.9 {
-                initialVolume = 0.9
+                initialVolume = 0.8
             } else if initialVolume < 0.1 {
-                initialVolume = 0.1
+                initialVolume = 0.2
             }
         } catch {
             print("error: \(error)")
@@ -565,12 +569,33 @@ g.strokePath()
             }
         }
     }
-    var flashflg = false
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //let touch = touches.first!
+        //let location = touch.location(in: self.view)
+        if let image = self.imageView1.image {
+            saveImage(image: image)
+            print("save image")
+        }
+    }
     // save
     private func saveImage(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    @objc func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     // flash LED
+    var flashflg = false
     func flashLED(flg: Bool) {
         let device = AVCaptureDevice.default(for: AVMediaType.video)!
         if device.hasTorch {

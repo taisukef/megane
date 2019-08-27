@@ -21,7 +21,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let w = self.view.frame.width
         let h = self.view.frame.height
         let w2 = w / 2
-        let h2 = w2 * 1080 / 1920
+        // AVCaptureSession.Preset. に合わせる
+//        let h2 = w2 * 1080 / 1920
+        let h2 = w2 / 640 * 480
         let y = (h - h2) / 2
         self.imageView1.frame = CGRect(x:0, y:y, width:w2, height:h2)
         self.imageView2.frame = CGRect(x:self.view.frame.width / 2, y:y, width:w2, height:h2)
@@ -264,11 +266,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 
                 // QRコードを上書き！
                 g.beginPath()
-            g.setFillColor(UIColor.white.cgColor)
-            g.setStrokeColor(UIColor.white.cgColor)
+                g.setFillColor(UIColor.white.cgColor)
+                g.setStrokeColor(UIColor.white.cgColor)
                 g.addRect(rect)
-            g.fillPath()
-g.strokePath()
+                g.fillPath()
+                g.strokePath()
 
                 feature.messageString?.draw(in: rect, withAttributes: textFontAttributes)
             }
@@ -305,9 +307,9 @@ g.strokePath()
             let vol = audioSession.outputVolume
             initialVolume = Double(vol.description)!
             if initialVolume > 0.9 {
-                initialVolume = 0.9
+                initialVolume = 0.8
             } else if initialVolume < 0.1 {
-                initialVolume = 0.1
+                initialVolume = 0.2
             }
         } catch {
             print("error: \(error)")
@@ -372,12 +374,33 @@ g.strokePath()
             }
         }
     }
-    var flashflg = false
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //let touch = touches.first!
+        //let location = touch.location(in: self.view)
+        if let image = self.imageView1.image {
+            saveImage(image: image)
+            print("save image")
+        }
+    }
     // save
     private func saveImage(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    @objc func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     // flash LED
+    var flashflg = false
     func flashLED(flg: Bool) {
         let device = AVCaptureDevice.default(for: AVMediaType.video)!
         if device.hasTorch {
