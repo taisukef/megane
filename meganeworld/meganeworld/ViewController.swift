@@ -28,19 +28,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         self.view.backgroundColor = UIColor.black
         
+        let cw:CGFloat = 1280
+        let ch:CGFloat = 720
+        //        let h2 = w2 * 1080 / 1920
+        //let h2 = w2 * 480 / 640
+
         self.imageView1 = UIImageView()
         self.imageView2 = UIImageView()
         let w = self.view.frame.width
         let h = self.view.frame.height
+        
         let w2 = w / 2
-        //        let h2 = w2 * 1080 / 1920
-        //let h2 = w2 * 480 / 640
-        let h2 = w2 / 1280 * 720
+        let h2 = w2 / cw * ch
         let y = (h - h2) / 2
-        self.imageView1.frame = CGRect(x:0, y:y, width:w2, height:h2)
-        self.imageView2.frame = CGRect(x:self.view.frame.width / 2, y:y, width:w2, height:h2)
+        
+        let h1 = w / cw * ch
+        let y1 = (h - h1) / 2
+        
+//        self.imageView1.frame = CGRect(x:0, y:y, width:w2, height:h2)
+        self.imageView1.frame = CGRect(x:0, y:y1, width:w, height:h1)
+        self.imageView2.frame = CGRect(x:w2, y:y, width:w2, height:h2)
         self.view.addSubview(self.imageView1)
-        self.view.addSubview(self.imageView2)
+        //self.view.addSubview(self.imageView2)
 
         self.initNotificationsFromAppDelegate()
     }
@@ -102,7 +111,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         camera = AVCaptureDevice.default(
             AVCaptureDevice.DeviceType.builtInWideAngleCamera,
             for: AVMediaType.video,
-            position: .back) // position: .front
+            position: .back
+//            position: .front
+        )
         
         do {
             input = try AVCaptureDeviceInput(device: camera)
@@ -268,8 +279,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 4
-    let nmeganeoption = 5
+    var meganeoption = 5
+    let nmeganeoption = 6
     func drawMegane(image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
@@ -429,6 +440,68 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         g.addArc(center: right, radius: r, startAngle: CGFloat(th1), endAngle: CGFloat(th2), clockwise: false)
                         g.strokePath()
                     }
+                } else if (meganeoption == 5) {
+                    // Choco
+                    let CHOCO_COLORS = [
+                        UIColor.init(value: 0xF8F365),
+                        UIColor.init(value: 0xD98A8A),
+                        UIColor.init(value: 0xE59B47),
+                        UIColor.init(value: 0xC8C573),
+                        UIColor.init(value: 0xBA7665),
+                    ]
+                    let BG_COLOR = UIColor.init(value: 0x9BA3AF)
+                    let HIGHLIGHT_COLOR = UIColor.init(value: 0xF0F0F0)
+
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let r = len / 3 * 1.1
+                    let bold = r
+                    let th = atan2(dy, dx)
+
+                    
+                    let gth = th - CGFloat(Double.pi)
+
+                    // left
+                    var nch = 0
+                    for j in 0..<2 {
+                        let center = j == 0 ? left : right
+                        g.setLineWidth(bold)
+                        g.setStrokeColor(BG_COLOR.cgColor)
+                        g.beginPath()
+                        g.addArc(center: center, radius: r, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+                        g.strokePath()
+                    }
+                    for j in 0..<2 {
+                        let center = j == 0 ? left : right
+                        let cr = r / 6
+                        for i in 0..<7 {
+                            let n = nch % CHOCO_COLORS.count
+                            nch += 1
+                            g.setStrokeColor(CHOCO_COLORS[n].cgColor)
+                            var th1 = Double.pi * 2 / 7 * Double(i) + Double(gth)
+                            if j == 0 {
+                                th1 += Double.pi * 2 / 7 / 2
+                            }
+                            let cx = center.x + CGFloat(cos(th1)) * r
+                            let cy = center.y + CGFloat(sin(th1)) * r
+                            g.setLineWidth(cr * 2)
+                            g.beginPath()
+                            g.addArc(center: CGPoint(x: cx, y: cy), radius: cr, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: false)
+                            g.strokePath()
+                            
+                            let thh = Double.pi * 15 / 8
+                            g.setStrokeColor(HIGHLIGHT_COLOR.cgColor)
+                            let cx2 = cx + CGFloat(cos(thh)) * CGFloat(cr)
+                            let cy2 = cy + CGFloat(sin(thh)) * CGFloat(cr)
+                            g.setLineWidth(cr / 2)
+                            g.beginPath()
+                            g.addArc(center: CGPoint(x: cx2, y: cy2), radius: cr / 4, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: false)
+                            g.strokePath()
+
+                        }
+
+                    }
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
@@ -519,7 +592,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     }
                     print("zoom: \(zoom)")
  */
-                if meganeoption == nmeganeoption {
+                if meganeoption == nmeganeoption - 1 {
                     meganeoption = 0
                 } else {
                     meganeoption += 1
@@ -547,7 +620,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     flashflg = !flashflg
  */
                 if meganeoption == 0 {
-                    meganeoption = 4
+                    meganeoption = nmeganeoption - 1
                 } else {
                     meganeoption -= 1
                 }
