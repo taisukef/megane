@@ -279,8 +279,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 5
-    let nmeganeoption = 6
+    var meganeoption = 6
+    let nmeganeoption = 7
+    var imgmegane = UIImage(named:"megane")!
     func drawMegane(image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
@@ -502,6 +503,29 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         }
 
                     }
+                } else if (meganeoption == 6) {
+                    // Katapan
+                    
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let th = atan2(dy, dx)
+                    let cx = (left.x + right.x) / 2
+                    let cy = (left.y + right.y) / 2
+                    
+                    let mw = len * 2.2
+                    let mh = mw / imgmegane.size.width * imgmegane.size.height
+                    let px = cx - mw / 2
+                    let py = cy - mh / 2
+                    
+                    g.saveGState()
+                    g.translateBy(x: cx, y: cy)
+                    g.scaleBy(x: 1.0, y: -1.0)
+                    g.rotate(by: CGFloat(-th))
+                    g.translateBy(x: -cx, y: -cy)
+                    imgmegane.draw(in: CGRect(x: px, y: py, width: mw, height: mh))
+                    g.restoreGState()
+                    
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
