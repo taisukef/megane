@@ -95,6 +95,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         session = nil
         camera = nil
     }
+    let CAMERA_FRONT = true
     let DETECT_QRCODE = false
     let DETECT_FACE = true
     let FILTER_SUPPORT = false
@@ -111,8 +112,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         camera = AVCaptureDevice.default(
             AVCaptureDevice.DeviceType.builtInWideAngleCamera,
             for: AVMediaType.video,
-            position: .back
-//            position: .front
+            position: CAMERA_FRONT ? .front : .back
         )
         
         do {
