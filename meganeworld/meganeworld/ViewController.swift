@@ -279,9 +279,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 6
-    let nmeganeoption = 7
+    var meganeoption = 7
+    let nmeganeoption = 8
     var imgmegane = UIImage(named:"megane")!
+    var imgmayer = UIImage(named:"mayer")!
     func drawMegane(image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
@@ -302,7 +303,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let features = detector!.features(in: CIImage(image: image)!, options: options)
 
         if features.count > 0 {
+            /*
+            var faces : [CIFaceFeature] = []
             for feature in features as! [CIFaceFeature] {
+                faces.append(feature)
+            }
+            let faces2 : [CIFaceFeature] = faces.sort { $0.bounds.width < $1.bounds.width }
+             //for feature in faces2 {
+            */
+            //for feature in features as! [CIFaceFeature] {
+            for i in (0..<features.count).reversed() { // 小さい顔から順に描画
+                let feature: CIFaceFeature = features[i] as! CIFaceFeature
                 var rect: CGRect = feature.bounds
                 rect.origin.y = image.size.height - rect.origin.y - rect.size.height
                 
@@ -525,7 +536,29 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     g.translateBy(x: -cx, y: -cy)
                     imgmegane.draw(in: CGRect(x: px, y: py, width: mw, height: mh))
                     g.restoreGState()
+                } else if (meganeoption == 7) {
+                    // Mayer
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let th = atan2(dy, dx)
+                    let cx = (left.x + right.x) / 2
+                    let cy = (left.y + right.y) / 2
                     
+                    let mw = len * 8
+                    let mh = mw / imgmayer.size.width * imgmayer.size.height
+                    let px = cx - mw / 2
+                    let py = cy - mh / 2
+                    
+                    g.saveGState()
+                    g.translateBy(x: cx, y: cy)
+                    g.scaleBy(x: 1.0, y: -1.0)
+                    g.rotate(by: CGFloat(-th))
+                    g.translateBy(x: -cx, y: -cy)
+                    imgmayer.draw(in: CGRect(x: px, y: py, width: mw, height: mh))
+                    g.restoreGState()
+                    
+
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
