@@ -23,6 +23,12 @@ extension UIColor {
 }
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    let CAMERA_FRONT = false
+    let DETECT_QRCODE = false
+    let DETECT_FACE = true
+    let FILTER_SUPPORT = false
+    let MEGANE_MODE = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,11 +51,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let h1 = w / cw * ch
         let y1 = (h - h1) / 2
         
-//        self.imageView1.frame = CGRect(x:0, y:y, width:w2, height:h2)
-        self.imageView1.frame = CGRect(x:0, y:y1, width:w, height:h1)
-        self.imageView2.frame = CGRect(x:w2, y:y, width:w2, height:h2)
-        self.view.addSubview(self.imageView1)
-        //self.view.addSubview(self.imageView2)
+        if MEGANE_MODE {
+            self.imageView1.frame = CGRect(x:0, y:y, width:w2, height:h2)
+            self.imageView2.frame = CGRect(x:w2, y:y, width:w2, height:h2)
+            self.view.addSubview(self.imageView1)
+            self.view.addSubview(self.imageView2)
+        } else {
+            self.imageView1.frame = CGRect(x:0, y:y1, width:w, height:h1)
+            self.imageView2.frame = CGRect(x:w2, y:y, width:w2, height:h2)
+            self.view.addSubview(self.imageView1)
+        }
 
         self.initNotificationsFromAppDelegate()
     }
@@ -95,25 +106,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         session = nil
         camera = nil
     }
-    let CAMERA_FRONT = true
-    let DETECT_QRCODE = false
-    let DETECT_FACE = true
-    let FILTER_SUPPORT = false
     func configureCamera() {
         session = AVCaptureSession()
         // iPhone Xで実験
         //session.sessionPreset = AVCaptureSession.Preset.cif352x288 // 34% 荒い
         //session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
-        session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
+        session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？、iPhone11 44% 解像度 8 750x1334, 8+ 1080x1920, XR/11 828×1792ドット, X/11Pro 1125×2436, 11ProMax 1242×2688
         //session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
-        //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
+        //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK! iPhone11 44%
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
         camera = AVCaptureDevice.default(
-            AVCaptureDevice.DeviceType.builtInWideAngleCamera,
+            AVCaptureDevice.DeviceType.builtInUltraWideCamera, // AVCaptureDevice.DeviceType.builtInWideAngleCamera,
             for: AVMediaType.video,
             position: CAMERA_FRONT ? .front : .back
         )
+        if camera == nil {
+            camera = AVCaptureDevice.default(
+                AVCaptureDevice.DeviceType.builtInWideAngleCamera,
+                for: AVMediaType.video,
+                position: CAMERA_FRONT ? .front : .back
+            )
+        }
         
         do {
             input = try AVCaptureDeviceInput(device: camera)
@@ -279,10 +293,34 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 7
-    let nmeganeoption = 8
+    var meganeoption = 8
+    let nmeganeoption = 9
+    
     var imgmegane = UIImage(named:"megane")!
     var imgmayer = UIImage(named:"mayer")!
+    var imgpumpkin = UIImage(named:"halloween_pumpkin7")!
+    func drawImageFace(g: CGContext, img: UIImage, right: CGPoint, left: CGPoint, ratio: CGFloat, adjusty: CGFloat = 1) {
+        let dx = left.x - right.x
+        let dy = left.y - right.y
+        let len = sqrt(dx * dx + dy * dy)
+        let th = atan2(dy, dx)
+        let cx = (left.x + right.x) / 2
+        let cy = (left.y + right.y) / 2
+        
+        let mw = len * ratio
+        let mh = mw / img.size.width * img.size.height
+        let px = cx - mw / 2
+        let py = cy - mh / 2 + (mh * adjusty)
+        
+        g.saveGState()
+        g.translateBy(x: cx, y: cy)
+        g.scaleBy(x: 1.0, y: -1.0)
+        g.rotate(by: CGFloat(-th))
+        g.translateBy(x: -cx, y: -cy)
+        img.draw(in: CGRect(x: px, y: py, width: mw, height: mh))
+        g.restoreGState()
+    }
+    
     func drawMegane(image: UIImage) -> UIImage {
         UIGraphicsBeginImageContext(image.size)
         let rect = CGRect(x:0, y:0, width:image.size.width, height:image.size.height)
@@ -516,49 +554,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     }
                 } else if (meganeoption == 6) {
                     // Katapan
-                    
-                    let dx = left.x - right.x
-                    let dy = left.y - right.y
-                    let len = sqrt(dx * dx + dy * dy)
-                    let th = atan2(dy, dx)
-                    let cx = (left.x + right.x) / 2
-                    let cy = (left.y + right.y) / 2
-                    
-                    let mw = len * 2.2
-                    let mh = mw / imgmegane.size.width * imgmegane.size.height
-                    let px = cx - mw / 2
-                    let py = cy - mh / 2
-                    
-                    g.saveGState()
-                    g.translateBy(x: cx, y: cy)
-                    g.scaleBy(x: 1.0, y: -1.0)
-                    g.rotate(by: CGFloat(-th))
-                    g.translateBy(x: -cx, y: -cy)
-                    imgmegane.draw(in: CGRect(x: px, y: py, width: mw, height: mh))
-                    g.restoreGState()
+                    drawImageFace(g: g, img: imgmegane, right: right, left: left, ratio: 2.2)
                 } else if (meganeoption == 7) {
                     // Mayer
-                    let dx = left.x - right.x
-                    let dy = left.y - right.y
-                    let len = sqrt(dx * dx + dy * dy)
-                    let th = atan2(dy, dx)
-                    let cx = (left.x + right.x) / 2
-                    let cy = (left.y + right.y) / 2
-                    
-                    let mw = len * 8
-                    let mh = mw / imgmayer.size.width * imgmayer.size.height
-                    let px = cx - mw / 2
-                    let py = cy - mh / 2
-                    
-                    g.saveGState()
-                    g.translateBy(x: cx, y: cy)
-                    g.scaleBy(x: 1.0, y: -1.0)
-                    g.rotate(by: CGFloat(-th))
-                    g.translateBy(x: -cx, y: -cy)
-                    imgmayer.draw(in: CGRect(x: px, y: py, width: mw, height: mh))
-                    g.restoreGState()
-                    
-
+                    drawImageFace(g: g, img: imgmayer, right: right, left: left, ratio: 8)
+                } else if (meganeoption == 8) {
+                    // Pumpkin
+                    drawImageFace(g: g, img: imgpumpkin, right: right, left: left, ratio: 5, adjusty: -0.1)
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
