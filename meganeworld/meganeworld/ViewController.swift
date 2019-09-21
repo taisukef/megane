@@ -299,7 +299,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var imgmegane = UIImage(named:"megane")!
     var imgmayer = UIImage(named:"mayer")!
     var imgpumpkin = UIImage(named:"halloween_pumpkin7")!
-    func drawImageFace(g: CGContext, img: UIImage, right: CGPoint, left: CGPoint, ratio: CGFloat, adjusty: CGFloat = 1) {
+    func drawImageFace(g: CGContext, img: UIImage, right: CGPoint, left: CGPoint, ratio: CGFloat, adjusty: CGFloat = 0) {
         let dx = left.x - right.x
         let dy = left.y - right.y
         let len = sqrt(dx * dx + dy * dy)
