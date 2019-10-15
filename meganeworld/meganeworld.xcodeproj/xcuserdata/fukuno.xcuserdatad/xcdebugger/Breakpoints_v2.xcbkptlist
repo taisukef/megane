@@ -7,23 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CE9123E1-A67B-4C2F-B322-391BACDC7A4C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "meganeworld/ViewController.swift"
-            timestampString = "590368472.520942"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "drawMegane(image:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D27D0CB6-3841-4CF9-A59C-AB768E872C9A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -32,8 +15,8 @@
             timestampString = "590368472.5213031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
             landmarkName = "drawMegane(image:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -79,16 +79,30 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         session = AVCaptureSession()
         // iPhone Xで実験
         //session.sessionPreset = AVCaptureSession.Preset.cif352x288 // 34% 荒い
-        session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
-        //session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
+        //session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
+        session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？
         //session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
         //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
-        camera = AVCaptureDevice.default(
-            AVCaptureDevice.DeviceType.builtInWideAngleCamera,
-            for: AVMediaType.video,
-            position: .back) // position: .front
+        if #available(iOS 13.0, *) {
+            camera = AVCaptureDevice.default(
+                AVCaptureDevice.DeviceType.builtInUltraWideCamera,
+                for: AVMediaType.video,
+                position: .back)
+            // position: .front
+            if camera == nil {
+                camera = AVCaptureDevice.default(
+                    AVCaptureDevice.DeviceType.builtInWideAngleCamera,
+                    for: AVMediaType.video,
+                    position: .back) // position: .front
+            }
+        } else {
+            camera = AVCaptureDevice.default(
+                AVCaptureDevice.DeviceType.builtInWideAngleCamera,
+                for: AVMediaType.video,
+                position: .back) // position: .front
+        }
         
         do {
             input = try AVCaptureDeviceInput(device: camera)
@@ -114,15 +128,52 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //フィルタのカメラへの追加
         var filter:CIFilter?
         
+                // 元画像幅高さ
+        //        let iw: CGFloat = 640
+        //        let ih: CGFloat = 480
+        let iw: CGFloat = 1280
+        let ih: CGFloat = 720
         
+        
+        /*
+        filter = CIFilter(name: "CILineOverlay") // 線画・・・真っ黒、パラメーターが複雑
+        filters.append(filter!)
+        */
+        
+        filter = CIFilter(name: "CIEdges") // 点画風
+        filter!.setValue(10.0, forKey: kCIInputIntensityKey) // default 1.0
+        filters.append(filter!)
+
+        
+        /*
+        filter = CIFilter(name: "CIVignetteEffect")
+        filters.append(filter!)
+        */
+        /*
+        filter = CIFilter(name: "CILineScreen") // CIDotのラインだけ版
+        filters.append(filter!)
+        filter = CIFilter(name: "CIHatchedScreen") // CILineScreenと同じ？
+        filters.append(filter!)
+ */
+        /*
+        filter = CIFilter(name: "CIPointillize") // 点画風
+        filters.append(filter!)
+        filter = CIFilter(name: "CINoiseReduction") // ノイズ除去 .. そもそもノイズがあまりない
+        filter!.setValue(20, forKey: "inputNoiseLevel")
+        filters.append(filter!)
+        */
+
+        //filter = CIFilter(name: "CIDotScreen", parameters: [ "angle": 0, "center" : CGPoint(x: iw / 2, y: ih / 2), "sharpness" : 1, "width" : 10 ])
+        filter = CIFilter(name: "CIDotScreen")
+//        filter!.setValue(0.5, forKey: "width") // あると落ちる？
+        filters.append(filter!)
+
+
         filter = CIFilter(name: "CIComicEffect") // おもしろいけど、ちょっと重い VGAなら大丈夫！
         filters.append(filter!)
-//        filter = CIFilter(name: kCICategoryHalftoneEffect) // error
-        
-        // 元画像幅高さ
-        let iw: CGFloat = 640
-        let ih: CGFloat = 480
-        
+        //        filter = CIFilter(name: kCICategoryHalftoneEffect) // error
+                
+
         // 左右反転
         filter = CIFilter(name: "CIAffineTransform")
         filter!.setValue(CGAffineTransform(a: -1, b: 0, c: 0, d: 1, tx: iw, ty: 0), forKey: kCIInputTransformKey)
@@ -148,9 +199,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         filter = CIFilter(name: "CICrystallize", parameters: [ "inputRadius": 20 ])! // クリスタル風
         filters.append(filter!)
 
-//        filter = CIFilter(name: "CILineOverlay") // 線画・・・真っ暗になる？
-//        filters.append(filter!)
-
         filter = CIFilter(name: "CIHighlightShadowAdjust") // 線画
         filters.append(filter!)
 
@@ -165,6 +213,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         filter = CIFilter(name: "CIColorPosterize") // 減色モード
         filters.append(filter!)
+        //        filter = CIFilter(name: "CISpotColor") // CIColorPostersizeと同じような漢字
+        //        filters.append(filter!)
 
         //filter = CIFilter(name: "CIPointillize")
 //        filter = CIFilter(name: "CILineOverlay") // まっくら？
@@ -186,7 +236,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         //filter = CIFilter(name: "CIMedianFilter") // ノイズ除去、きいてる？
         //filter = CIFilter(name: "CISpotLight") // スポットライトがあたるように、しぶい！
-        // filter = CIFilter(name: "CISpotColor") // 色変換？おもしろい
         
   //      filter = CIFilter(name: "CISepiaTone")
 //        filter?.setValue(0.1, forKey: kCIInputIntensityKey) // default: 1.00 // 強さ

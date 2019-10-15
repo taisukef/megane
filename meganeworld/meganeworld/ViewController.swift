@@ -22,12 +22,44 @@ extension UIColor {
     }
 }
 
+extension UIImage {
+
+
+    //上下反転
+    func flipVertical() -> UIImage {
+        let scale = 1.0
+        UIGraphicsBeginImageContextWithOptions(size, false, CGFloat(scale))
+        let imageRef = self.cgImage
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y:  0)
+        context?.scaleBy(x: 1.0, y: 1.0)
+        context?.draw(imageRef!, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let flipHorizontalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return flipHorizontalImage!
+    }
+
+    //左右反転
+    func flipHorizontal() -> UIImage {
+        let scale = 1.0
+        UIGraphicsBeginImageContextWithOptions(size, false, CGFloat(scale))
+        let imageRef = self.cgImage
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: size.width, y:  size.height)
+        context?.scaleBy(x: -1.0, y: -1.0)
+        context?.draw(imageRef!, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let flipHorizontalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return flipHorizontalImage!
+    }
+}
+
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    let CAMERA_FRONT = false
+    let CAMERA_FRONT = true
     let DETECT_QRCODE = false
     let DETECT_FACE = true
     let FILTER_SUPPORT = false
-    let MEGANE_MODE = true
+    let MEGANE_MODE = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +92,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.imageView1.frame = CGRect(x:0, y:y1, width:w, height:h1)
             self.imageView2.frame = CGRect(x:w2, y:y, width:w2, height:h2)
             self.view.addSubview(self.imageView1)
+        }
+        if CAMERA_FRONT {
+            self.view.transform = self.view.transform.scaledBy(x: -1, y: 1)
         }
 
         self.initNotificationsFromAppDelegate()
@@ -117,7 +152,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
         camera = AVCaptureDevice.default(
-            AVCaptureDevice.DeviceType.builtInUltraWideCamera, // AVCaptureDevice.DeviceType.builtInWideAngleCamera,
+//            AVCaptureDevice.DeviceType.builtInUltraWideCamera,
+            AVCaptureDevice.DeviceType.builtInWideAngleCamera,
             for: AVMediaType.video,
             position: CAMERA_FRONT ? .front : .back
         )
@@ -293,12 +329,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 8
-    let nmeganeoption = 9
+    var meganeoption = 10
+    let nmeganeoption = 11
     
     var imgmegane = UIImage(named:"megane")!
     var imgmayer = UIImage(named:"mayer")!
     var imgpumpkin = UIImage(named:"halloween_pumpkin7")!
+    var imgwhowatch = UIImage(named:"whowatch")!
+    var imgprocon = UIImage(named:"procon")!
     func drawImageFace(g: CGContext, img: UIImage, right: CGPoint, left: CGPoint, ratio: CGFloat, adjusty: CGFloat = 0) {
         let dx = left.x - right.x
         let dy = left.y - right.y
@@ -335,7 +373,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
         
         // 取得するパラメーターを指定する
-        let options = [CIDetectorSmile : true, CIDetectorEyeBlink : true]
+        //let options = [ CIDetectorSmile : true, CIDetectorEyeBlink : true ]
+        let options = [ CIDetectorSmile : false, CIDetectorEyeBlink : false ]
         
         // 画像から特徴を抽出する
         let features = detector!.features(in: CIImage(image: image)!, options: options)
@@ -561,6 +600,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 } else if (meganeoption == 8) {
                     // Pumpkin
                     drawImageFace(g: g, img: imgpumpkin, right: right, left: left, ratio: 5, adjusty: -0.1)
+                } else if (meganeoption == 9) {
+                    // Whowatch
+                    drawImageFace(g: g, img: imgwhowatch, right: right, left: left, ratio: 5, adjusty: -0.1)
+                } else if (meganeoption == 10) {
+                    // Whowatch
+                    let imgprocon2 = CAMERA_FRONT ? imgprocon : imgprocon.flipHorizontal()
+                    drawImageFace(g: g, img: imgprocon2, right: right, left: left, ratio: 4.1, adjusty: 0.15)
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
@@ -705,7 +751,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //let touch = touches.first!
         //let location = touch.location(in: self.view)
         if let image = self.imageView1.image {
-            saveImage(image: image)
+            if CAMERA_FRONT {
+                let image2 = image.flipHorizontal()
+                saveImage(image: image2)
+            } else {
+                saveImage(image: image)
+            }
             print("save image")
         }
     }
