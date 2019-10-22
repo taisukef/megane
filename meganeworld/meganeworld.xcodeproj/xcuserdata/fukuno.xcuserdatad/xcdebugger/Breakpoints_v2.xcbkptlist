@@ -15,10 +15,73 @@
             timestampString = "590368472.5213031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
             landmarkName = "drawMegane(image:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "meganeworld/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "953"
+            endingLineNumber = "953"
+            landmarkName = "MOBILENET_EN2JA"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - 24b874d0499627c0"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "meganeworld.ViewController.MAP_EN2JA.getter : Swift.Dictionary&lt;Swift.String, Swift.String&gt;"
+                  moduleName = "meganeworld"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fukuno/data/swift/megane/meganeworld/meganeworld/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "887"
+                  endingLineNumber = "887"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - f4ae1ad06c772a7b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "meganeworld.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; meganeworld.ViewController"
+                  moduleName = "meganeworld"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fukuno/data/swift/megane/meganeworld/meganeworld/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "887"
+                  endingLineNumber = "887"
+                  offsetFromSymbolStart = "2708">
+               </Location>
+               <Location
+                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - c4624fb68db4fe6e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "meganeworld.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;meganeworld.ViewController&gt;"
+                  moduleName = "meganeworld"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fukuno/data/swift/megane/meganeworld/meganeworld/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "887"
+                  endingLineNumber = "887"
+                  offsetFromSymbolStart = "2656">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

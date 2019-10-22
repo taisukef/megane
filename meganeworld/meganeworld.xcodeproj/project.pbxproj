@@ -14,6 +14,7 @@
 		69483FB120CB2C0400F217AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */; };
 		69483FBC20CB2C0400F217AF /* meganeworldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FBB20CB2C0400F217AF /* meganeworldTests.swift */; };
 		69483FC720CB2C0400F217AF /* meganeworldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69483FC620CB2C0400F217AF /* meganeworldUITests.swift */; };
+		69907492235DEFA600E749AF /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 69907491235DEFA600E749AF /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		69483FC220CB2C0400F217AF /* meganeworldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meganeworldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69483FC620CB2C0400F217AF /* meganeworldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meganeworldUITests.swift; sourceTree = "<group>"; };
 		69483FC820CB2C0400F217AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69907491235DEFA600E749AF /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = Model/MobileNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				69483FA620CB2C0200F217AF /* AppDelegate.swift */,
 				69483FA820CB2C0200F217AF /* ViewController.swift */,
 				69483FAA20CB2C0200F217AF /* Main.storyboard */,
+				69907491235DEFA600E749AF /* MobileNet.mlmodel */,
 				69483FAD20CB2C0400F217AF /* Assets.xcassets */,
 				69483FAF20CB2C0400F217AF /* LaunchScreen.storyboard */,
 				69483FB220CB2C0400F217AF /* Info.plist */,
@@ -258,6 +261,7 @@
 			files = (
 				69483FA920CB2C0200F217AF /* ViewController.swift in Sources */,
 				69483FA720CB2C0200F217AF /* AppDelegate.swift in Sources */,
+				69907492235DEFA600E749AF /* MobileNet.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
