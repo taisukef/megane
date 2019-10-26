@@ -93,10 +93,10 @@ extension UIImage {
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     let CAMERA_FRONT = false
     let DETECT_QRCODE = false
-    let DETECT_FACE = false
+    let DETECT_FACE = true
     let FILTER_SUPPORT = false
     let MEGANE_MODE = true
-    let CLASSIFY_IMAGE = true
+    let CLASSIFY_IMAGE = false
 
     var imageView1: UIImageView!
     var imageView2: UIImageView!
@@ -207,6 +207,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // iPhone Xで実験
         //session.sessionPreset = AVCaptureSession.Preset.cif352x288 // 34% 荒い
         //session.sessionPreset = AVCaptureSession.Preset.vga640x480 // 47% 4:3 なかなかきれい
+        
+        // for iPhone11
         session.sessionPreset = AVCaptureSession.Preset.iFrame1280x720 // CPU50%　16:9 かわらない？、iPhone11 44% 解像度 8 750x1334, 8+ 1080x1920, XR/11 828×1792ドット, X/11Pro 1125×2436, 11ProMax 1242×2688
         //session.sessionPreset = AVCaptureSession.Preset.hd1280x720 // CPU50% 16:9 きれい
         //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK! iPhone11 44%
@@ -396,7 +398,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 10
+    var meganeoption = 4
     let nmeganeoption = 11
     
     var imgmegane = UIImage(named:"megane")!
