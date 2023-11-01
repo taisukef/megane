@@ -404,8 +404,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIGraphicsEndImageContext()
         return resimage!
     }
-    var meganeoption = 4
-    let nmeganeoption = 11
+    var meganeoption = 11
+    let nmeganeoption = 12
     
     var imgmegane = UIImage(named:"megane")!
     var imgmayer = UIImage(named:"mayer")!
@@ -682,6 +682,35 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     // Whowatch
                     let imgprocon2 = CAMERA_FRONT ? imgprocon : imgprocon.flipHorizontal()
                     drawImageFace(g: g, img: imgprocon2, right: right, left: left, ratio: 4.1, adjusty: 0.15)
+                } else if (meganeoption == 11) {
+                    // Red rings
+                    let COLOR = UIColor.init(value: 0xf80000)
+                    
+                    let dx = left.x - right.x
+                    let dy = left.y - right.y
+                    let len = sqrt(dx * dx + dy * dy)
+                    let th = atan2(dy, dx)
+                    let r = len * 1.4
+                    let n = 17
+                    let cx = (left.x + right.x) / 2
+                    let cy = (left.y + right.y) / 2
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "ss.SSS"
+                    let t = Double(formatter.string(from: Date())) ?? 0.0
+                    for i in 0..<n {
+                        let div = 10.0 // must be the divisor of 60
+                        let dt = (fmod(t, div) / div) * (Double.pi * 2)
+                        let th0 = Double.pi * 2 / Double(n) * Double(i) + dt
+                        let bth = th0 + th
+                        let r0 = r + abs(sin(th0)) * r * 0.3
+                        let x1 = cx + cos(bth) * r0
+                        let y1 = cy + sin(bth) * r0
+                        let r2 = Float(r) * (0.2 + Float(i % 3) * 0.12)
+                        g.setFillColor(COLOR.cgColor)
+                        g.beginPath()
+                        g.addArc(center: CGPoint(x: x1, y: y1), radius: CGFloat(r2), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: false)
+                        g.fillPath()
+                    }
                 } else {
                     /*
                     g.setStrokeColor(UIColor.black.cgColor)
