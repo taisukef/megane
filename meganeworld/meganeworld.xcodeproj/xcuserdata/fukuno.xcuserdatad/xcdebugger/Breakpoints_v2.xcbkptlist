@@ -15,8 +15,8 @@
             timestampString = "590368472.5213031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "573"
-            endingLineNumber = "573"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
             landmarkName = "drawMegane(image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -31,13 +31,13 @@
             filePath = "meganeworld/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "955"
-            endingLineNumber = "955"
+            startingLineNumber = "962"
+            endingLineNumber = "962"
             landmarkName = "MOBILENET_EN2JA"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - 24b874d0499627c0"
+                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - 50d15df8a82ab459"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -52,7 +52,7 @@
                   offsetFromSymbolStart = "96">
                </Location>
                <Location
-                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - f4ae1ad06c772a7b"
+                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - 80c733f88dcbb9e2"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -67,7 +67,7 @@
                   offsetFromSymbolStart = "2708">
                </Location>
                <Location
-                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - c4624fb68db4fe6e"
+                  uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - b00b669e6c086df7"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"

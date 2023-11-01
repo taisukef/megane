@@ -85,7 +85,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //session.sessionPreset = AVCaptureSession.Preset.hd1920x1080 // CPU88% 16:9 かわらない？ iPhone6でもQRcode offならOK!
         //session.sessionPreset = AVCaptureSession.Preset.hd4K3840x2160 // CPU93% 16:9 かわらない？ QRcode offなら実用的
 
-        if #available(iOS 13.0, *) {
+        //if #available(iOS 13.0, *) {
+        if (true) {
             camera = AVCaptureDevice.default(
                 AVCaptureDevice.DeviceType.builtInUltraWideCamera,
                 for: AVMediaType.video,
@@ -98,17 +99,26 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     position: .back) // position: .front
             }
         } else {
+            print("err")
+        }
+        /*
+         else {
             camera = AVCaptureDevice.default(
                 AVCaptureDevice.DeviceType.builtInWideAngleCamera,
                 for: AVMediaType.video,
                 position: .back) // position: .front
         }
+         if let camera1 = camera {
+             do {
+                 input = try AVCaptureDeviceInput(device: camera1)
+             } catch (
+                 print("can't get input")
+             )
+         } else {
+             print("can't get camera")
+         }
+        */
         
-        do {
-            input = try AVCaptureDeviceInput(device: camera)
-        } catch let error as NSError {
-            print(error)
-        }
         if (session.canAddInput(input)) {
             session.addInput(input)
         }

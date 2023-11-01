@@ -91,11 +91,11 @@ extension UIImage {
 }
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    let CAMERA_FRONT = false
+    let CAMERA_FRONT = true
     let DETECT_QRCODE = false
     let DETECT_FACE = true
     let FILTER_SUPPORT = false
-    let MEGANE_MODE = true
+    let MEGANE_MODE = false
     let CLASSIFY_IMAGE = false
 
     var imageView1: UIImageView!
@@ -300,7 +300,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   //      filter = CIFilter(name: "CISepiaTone")
 //        filter?.setValue(0.1, forKey: kCIInputIntensityKey) // default: 1.00 // 強さ
         
-        session.startRunning()
+        //session.startRunning()
+        let backgroundQueue = DispatchQueue(label: "background_queue",
+                                             qos: .background)
+         
+        backgroundQueue.async {
+            self.session.startRunning()
+        }
     }
     var filters:Array<CIFilter> = []
     var filterone:CIFilter?
@@ -875,7 +881,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
              To use a different Core ML classifier model, add it to the project
              and replace `MobileNet` with that model's generated Swift class.
              */
-            let model = try VNCoreMLModel(for: MobileNet().model)
+            let config = MLModelConfiguration()
+            let model = try VNCoreMLModel(for: MobileNet(configuration: config).model)
             
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
