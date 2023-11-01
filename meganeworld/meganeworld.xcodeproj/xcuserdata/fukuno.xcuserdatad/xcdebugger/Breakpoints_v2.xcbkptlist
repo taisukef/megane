@@ -31,10 +31,10 @@
             filePath = "meganeworld/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "962"
-            endingLineNumber = "962"
-            landmarkName = "MOBILENET_EN2JA"
-            landmarkType = "24">
+            startingLineNumber = "991"
+            endingLineNumber = "991"
+            landmarkName = "processClassifications(for:error:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "D1B5D713-FCCC-4EC8-9631-37B4E74CEE9B - 50d15df8a82ab459"
