@@ -102,6 +102,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var imageView2: UIImageView!
     var classficationLabel1: UILabel!
     var classficationLabel2: UILabel!
+    
+    var orgimage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -327,6 +329,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     image = UIImage(ciImage: filter.outputImage!)
                 }
             }
+            self.orgimage = image
 
             image = resizeImage(image: image, ratio: zoom)
             if DETECT_QRCODE {
@@ -860,6 +863,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 saveImage(image: image2)
             } else {
                 saveImage(image: image)
+            }
+            if let image = self.orgimage {
+                if CAMERA_FRONT {
+                    let image2 = image.flipHorizontal()
+                    saveImage(image: image2)
+                } else {
+                    saveImage(image: image)
+                }
             }
             print("save image")
         }
